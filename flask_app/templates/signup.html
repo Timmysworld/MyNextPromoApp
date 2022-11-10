@@ -11,11 +11,18 @@
         <div></div>
         <div class="form-signup">
             <h2>Sign Up</h2>
-            <p>Already have an account? Log In</p>
-            <form action="" method="post">
+            <p>Already have an account? <a href="">Log In</a> </p>
+            <form action="/register/admin" method="post">
                 <div>
-                    <label for="accountName">Account Name: </label>
-                    <input type="text" name="accountName">
+                    {% with messages = get_flashed_messages(category_filter=['register']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="text-warning">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <label for="account_name">Account Name: </label>
+                    <input type="text" name="account_name">
                 </div>
                 <div>
                     <label for="email">Email: </label>
@@ -25,7 +32,11 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="">
                 </div>
-                <button type="submit">Sign Up</button>
+                <div>
+                    <label for="confirmPass">Confirm Password</label>
+                    <input type="password" name="confirmPass" id="">
+                </div>
+                <a href=""><button type="submit">Sign Up</button></a>
             </form>
         </div>
     </div>
