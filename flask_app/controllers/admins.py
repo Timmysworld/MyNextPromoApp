@@ -14,6 +14,10 @@ def home():
 def admin_signup():
     return render_template('signup.html')
 
+@app.route('/signin')
+def admin_sign():
+    return render_template('signin.html')
+
 # CREATE ADMIN --> DEF REGISTER_ADMIN
 @app.route('/register/admin', methods=['POST'])
 def register():
@@ -47,17 +51,26 @@ def register():
 
 @app.route('/login', methods=['POST'])
 def login():
+    print("YOURE ABOUT TO LOG IN")
     admin_in_database = admin.Admin.get_by_email(request.form['email'])
+    print("CHECKING LOG INFO")
     if not admin_in_database:
         flash("Invalid Login Information", "login")
-        return redirect('/')
+        return redirect('/signin')
     if not bcrypt.check_password_hash(admin_in_database.password, request.form['password']):
         flash("Invalid Login Information", "login")
-        return redirect('/')
+        return redirect('/signin')
     session['admin_id'] = admin_in_database.id
-    return redirect('/')
-    # NEED TO ADD A ROUTE ^^^
+    print("CLEAR FOR DATA")
+    return redirect('/admin/dashboard')
 
+@app.route('/admin/dashboard')
+def admin_user_dashboard():
+    if "admin_id" not in session:
+        return redirect('/')
+    logged_in_admin = admin.Admin.get_by_id(session["admin_id"])
+    return render_template('dashboard.html', logged_in_user = logged_in_admin)
+    
 
 @app.route('/logout')
 def logout():

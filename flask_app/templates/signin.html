@@ -18,6 +18,13 @@
                     <input type="text" name="account_name">
                 </div> -->
                 <div>
+                    {% with messages = get_flashed_messages(category_filter=['login']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="text-warning">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <label for="email">Email: </label>
                     <input type="email" name="email" id="">
                 </div>

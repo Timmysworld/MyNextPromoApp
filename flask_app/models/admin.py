@@ -39,8 +39,7 @@ class Admin:
             is_valid =False
         if len(admin['password'])<8 or not PASSWORD_REGEX.match(admin['password']):
             flash(
-                    "Password must be at least 8 characters.","register"
-                    "Password must have at least one number."
+                    "Password must be at least 8 characters.,1 Uppercase,1 Lowercase,1 special character, 1 number.","register"
                 )
             is_valid = False
         if admin['confirmPass'] != admin['password']:
@@ -90,7 +89,7 @@ class Admin:
         
         result = connectToMySQL(cls.db).query_db(query,data2)
         print("this is my result")
-        print(result[0])
+        # print(result[0])
         if len(result) ==0:
             print("silly boy")
             return False
