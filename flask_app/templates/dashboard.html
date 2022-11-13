@@ -19,25 +19,27 @@
         </div>
     </header>
     <main>
-        <h2>Employee Dashboard</h2>
-        <p>create new employee</p>
+        <h2>Admin Dashboard</h2>
+        <a href="/"><p>create new employee</p></a>
         <table class="">
             <thead>
             <tr>
                 <th scope="col">Employee</th> 
                 <th scope="col">Position</th>
+                <th scope="col">GS Level</th>
                 <th scope="col">Email</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-                {% for  in  %}
+                {% for employee  in employees %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{employee.name}</td>
+                <td>{employee.position}</td>
+                <td>{employee.gs_level}</td>
+                <td>{employee.email}</td>
                 <td> 
-                    {% if session["user_id"] !=  %}
+                    {% if session["user_id"] != employee.admin_id  %}
                     <a href="/">View</a>  
                     {% else %}
                     <a href="/">Comment</a> | <a href="/">Delete</a> | 
@@ -51,3 +53,4 @@
     </main>
 </body>
 </html>
+
