@@ -39,7 +39,15 @@ class Admin:
             is_valid =False
         if len(admin['password'])<8 or not PASSWORD_REGEX.match(admin['password']):
             flash(
-                    "Password must be at least 8 characters.,1 Uppercase,1 Lowercase,1 special character, 1 number.","register"
+                    """
+                        Password must contain each of the following:
+                        <ul>
+                            <li>minimum 8 characters</li>
+                            <li>1 Uppercase & 1 Lowercase</li>
+                            <li>1 special character</li>
+                            <li>1 number</li>
+                        </ul>
+                    ""","register"
                 )
             is_valid = False
         if admin['confirmPass'] != admin['password']:
@@ -56,7 +64,7 @@ class Admin:
             flash("Invalid email address!", "login")
             is_valid = False
         if admin_in_database is False:
-            flash("Invalid information!","login")
+            flash("Sorry, You're not register!","login")
             is_valid = False
         if len(admin["password"]) < 8 or not bcrypt.check_password_hash (admin_in_database.password,admin["password"]):
             flash("Invalid information", "login")
@@ -109,3 +117,12 @@ class Admin:
             return False
         else:
             return cls(result[0])
+    
+    @classmethod
+    def get_by_id(cls,admin_id):
+        print(admin_id)
+        data = {"id":admin_id}
+        print(data)
+        query = "SELECT * FROM admin_users WHERE id = %(id)s;"
+        result = connectToMySQL(cls.db).query_db(query,data)
+        return cls(result[0])

@@ -25,24 +25,27 @@ def register():
     is_admin_valid = admin.Admin.validate_admin(request.form)
     if not is_admin_valid:
         return redirect('/signup')
-    pw_hash = bcrypt.generate_password_hash(request.form['password'])
-
-    data = {
-        "email": request.form['email'],
-        "password": pw_hash,
-    }
-    admin_id = admin.Admin.register_admin(data)
-    print("I just got REGISTERED")
-    print("CHECKING ACCOUNT NAME")
-    # DICTIONARY TO INSERT ACCOUNT_NAME FOR ADMIN USERS #
+# entire registration validation 
     data2 = {
-        "account_name": request.form['account_name'],
-        "admin_user_id": admin_id
+        "account_name": request.form['account_name'].title()
     }
     is_account_valid = admin.Admin.validate_admin_account(data2)
     if not is_account_valid:
         print("OMGOSHHHHHHHH")
         return redirect('/signup')
+
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+# then creates admin email 
+    data = {
+        "email": request.form['email'],
+        "password": pw_hash,
+    }
+# pulls admin email to register admin account 
+    admin_id = admin.Admin.register_admin(data)
+    print("I just got REGISTERED")
+    print("CHECKING ACCOUNT NAME")
+    # DICTIONARY TO INSERT ACCOUNT_NAME FOR ADMIN USERS #
+    data2[ "admin_user_id"] = admin_id
     account = admin.Admin.register_admin_account(data2)
     print(account)
     session['admin_id'] = admin_id
@@ -51,7 +54,7 @@ def register():
 
 @app.route('/login', methods=['POST'])
 def login():
-    print("YOURE ABOUT TO LOG IN")
+    print("YOU'RE ABOUT TO LOG IN")
     admin_in_database = admin.Admin.get_by_email(request.form['email'])
     print("CHECKING LOG INFO")
     if not admin_in_database:
@@ -70,7 +73,7 @@ def admin_user_dashboard():
         return redirect('/')
     logged_in_admin = admin.Admin.get_by_id(session["admin_id"])
     return render_template('dashboard.html', logged_in_user = logged_in_admin)
-    
+
 
 @app.route('/logout')
 def logout():
