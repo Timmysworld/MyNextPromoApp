@@ -17,7 +17,7 @@
                     {% with messages = get_flashed_messages(category_filter=['register']) %}
                         {% if messages %}
                             {% for message in messages %}
-                                <p class="text-warning">{{message}}</p>
+                                <p class="text-warning">{{message| safe}}</p>
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
