@@ -1,5 +1,5 @@
 from flask_app import app
-from flask_app.controllers import admins
+from flask_app.controllers import admins, employees
 
 
 if __name__ == "__main__":
