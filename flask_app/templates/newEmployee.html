@@ -28,10 +28,11 @@
                     <label for="position">Choose your Position:</label>
                     <select name="position" id="position">
                         <option value="" placeholder="Select A Position"></option>
-                        <option value="Firefigher/EMR">Firefigher/EMR</option>
+                        <option value="Firefighter/EMR">Firefighter/EMR</option>
                         <option value="Firefighter/EMT">Firefighter/EMT</option>
-                        <option value="Firefigher/Driver">Firefigher/Driver</option>
-                        <option value="Lead Firefigher">Lead Firefigher</option>
+                        <option value="Firefighter/Driver">Firefighter/Driver</option>
+                        <option value="Firefighter/EMT">Firefighter/Hazmat Tech</option>
+                        <option value="Lead Firefighter">Lead Firefighter</option>
                         <option value="Station Captain">Station Captain</option>
                         <option value="Asst.Chief of Operations">Asst.Chief of Operations</option>
                         <option value="Asst.Chief of training">Asst.Chief of Training</option>
@@ -39,6 +40,19 @@
                         <option value="Fire Chief">Fire Chief</option>
                     </select>
                 </div>
+
+                <div>
+                    <label for="Education">Education:</label>
+                    <select name="Education" id="Education">
+                        <option value="" placeholder=""></option>
+                        <option value="High School">High School</option>
+                        <option value="Some College">Some College</option>
+                        <option value="Bachelors Degree ">Bachelors Degree</option>
+                        <option value="Masters Degree ">Masters Degree</option>
+                        <option value="Doctors Degree ">Doctors Degree</option>
+                    </select>
+                </div>
+
                 <div>
                     <p>Choose your current GS Level:</p>
                     <input type="radio" id="Gs3" name="GS Level" value="GS3">
@@ -48,7 +62,7 @@
                     <label for="GS4">GS 4</label><br>
 
                     <input type="radio" id="GS5" name="GS Level" value="GS5">
-                    <label for="GS5">GS 5</label>
+                    <label for="GS5">GS 5</label><br>
 
                     <input type="radio" id="GS6" name="GS Level" value="GS6">
                     <label for="GS6">GS 6</label><br>
@@ -57,7 +71,7 @@
                     <label for="GS7">GS 7</label><br>
 
                     <input type="radio" id="GS8" name="GS Level" value="GS8">
-                    <label for="GS8">GS 8</label>
+                    <label for="GS8">GS 8</label><br>
 
                     <input type="radio" id="GS9" name="GS Level" value="GS9">
                     <label for="GS9">GS 9</label><br>
@@ -66,7 +80,7 @@
                     <label for="GS10">GS 10</label><br>
 
                     <input type="radio" id="GS11" name="GS Level" value="GS11">
-                    <label for="G11">GS 11</label>
+                    <label for="G11">GS 11</label><br>
 
                     <input type="radio" id="GS12" name="GS Level" value="GS12">
                     <label for="GS12">GS 12</label><br>
@@ -75,7 +89,7 @@
                     <label for="GS13">GS 13</label><br>
                     
                     <input type="radio" id="GS14" name="GS Level" value="GS14">
-                    <label for="GS14">GS 14</label>
+                    <label for="GS14">GS 14</label><br>
                 </div>
                 <div>
                     <p>Select all that Applies</p>
@@ -97,16 +111,46 @@
                     <input type="checkbox" id="Brush Truck" name="Brush Truck" value="Brush Truck">
                     <label for="Brush Truck">Brush Truck</label><br>
 
-                    <input type="checkbox" id="Wildland Firefigher I" name="Wildland Firefigher I" value="Wildland Firefigher I">
-                    <label for="Wildland Firefigher I">Wildland Firefigher I</label><br>
+                    <input type="checkbox" id="Wildland Firefighter I" name="Wildland Firefighter I" value="Wildland Firefighter I">
+                    <label for="Wildland Firefigher I">Wildland Firefighter I</label><br>
 
-                    <input type="checkbox" id="Wildland Firefigher II" name="Wildland Firefigher II" value="Wildland Firefigher II">
-                    <label for="Wildland Firefigher II">Wildland Firefigher II</label><br>
+                    <input type="checkbox" id="Wildland Firefighter II" name="Wildland Firefighter II" value="Wildland Firefighter II">
+                    <label for="Wildland Firefighter II">Wildland Firefighter II</label><br>
 
-                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                    <label for="vehicle3"> I have a boat</label>
+                    <input type="checkbox" id="Hazmat Technian" name="Hazmat Technician" value="Hazmat Technician">
+                    <label for="Hazmat Technian">Hazmat Technician</label><br>
+
+                    <input type="checkbox" id="Fire Inspector I" name="Fire Inspector I" value="Fire Inspector I">
+                    <label for="Fire Inspector I">Fire Inspector I</label><br>
+
+                    <input type="checkbox" id="Fire Inspector II" name="Fire Inspector II" value="Fire Inspector I">
+                    <label for="Fire Inspector II">Fire Inspector I</label><br>
+
+                    <input type="checkbox" id="Fire Inspector III" name="Fire Inspector III" value="Fire Inspector I">
+                    <label for="Fire Inspector III">Fire Inspector III</label><br>
+
+                    <input type="checkbox" id="Fire Officer I" name="Fire Officer I" value="Fire Officer I">
+                    <label for="Fire Officer I">Fire Officer I</label><br>
+
+                    <input type="checkbox" id="Fire Officer II" name="Fire Officer II" value="Fire Officer II">
+                    <label for="Fire Officer II">Fire Officer II</label><br>
+
+                    <input type="checkbox" id="Fire Officer III" name="Fire Officer III" value="Fire Officer III">
+                    <label for="Fire Officer III">Fire Officer III</label><br>
+
+                    <input type="checkbox" id="Fire Officer IV" name="Fire Officer IV" value="Fire Officer IV">
+                    <label for="Fire Officer IV">Fire Officer IV</label><br>
+
+                    <input type="checkbox" id="Fire Instructor I" name="Fire Instructor I" value="Fire Instructor I">
+                    <label for="Fire Instructor I">Fire Instructor I</label><br>
+
+                    <input type="checkbox" id="Fire Instructor II" name="Fire Instructor II" value="Fire Instructor II">
+                    <label for="Fire Instructor II">Fire Instructor II</label><br>
+
+                    <input type="checkbox" id="Fire Instructor III" name="Fire Instructor III" value="Fire Instructor III">
+                    <label for="Fire Instructor III">Fire Instructor III</label><br>
                 </div>
-                <a href=""><button type="submit">Sign Up</button></a>
+                <a href=""><button type="submit">Create Employee</button></a>
             </form>
         </div>
     </div>
