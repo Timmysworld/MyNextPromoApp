@@ -34,16 +34,22 @@ class Employee:
         BEGIN;
 
         INSERT INTO employees (first_name,last_name,email,position,gs_level,veteran,years_of_service,potential_hire)
-        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(position)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s);
+        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s);
 
-        INSERT INTO certifications (employee_id,name,value)
-        VALUES (LAST_INSERT_ID(),%(employee_id)s,%(name)s,%(value)s);
+        INSERT INTO positions (title)
+        VALUES (LAST_INSERT_ID(),%(title)s);
+
+        INSERT INTO education_levels (edu_level)
+        VALUES (LAST_INSERT_ID(),%(edu_level)s);
+
+        INSERT INTO certifications (employee_id,name)
+        VALUES (LAST_INSERT_ID(),%(employee_id)s,%(name)s);
         
-        INSERT INTO other qualifications (name,education,certification,start_date,end_date,value)
-        VALUES (LAST_INSERT_ID(),%(name)s,%(education)s,%(certification)s,%(start_date)s,%(end_date)s,%(value)s);
+        INSERT INTO other qualifications (certification)
+        VALUES (LAST_INSERT_ID()%(certification)s);
 
-        INSERT INTO collateral duties (name,value)
-        VALUES (LAST_INSERT_ID(),%(name)s,%(value)s);
+        INSERT INTO collateral duties (name)
+        VALUES (LAST_INSERT_ID(),%(name)s);
         
         COMMIT;"""
         return connectToMySQL(cls.db).query_db(query, data)
