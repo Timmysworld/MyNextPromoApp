@@ -24,7 +24,7 @@ def create_employee():
         "years_of_service": request.form['years_of_service'],
         "potential_hire": request.form['potential_hire'],
         "edu_level": request.form['edu_level'],
-        "position_id": request.form['position'],
+        "position_id": request.form['positions'],
         "account_id": account
     }
 

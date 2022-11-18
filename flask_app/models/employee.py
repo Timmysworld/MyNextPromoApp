@@ -25,8 +25,8 @@ class Employee:
     @classmethod
     def create_employee(cls,data):
         query = """
-        INSERT INTO employees (first_name,last_name,email,gs_level,veteran,years_of_service,potential_hire,Education_level_id, account_id, position_id)
-        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s,%(edu_level)s,%(account_id)s);%(position_id)s"""
+        INSERT INTO employees (first_name,last_name,email,gs_level,veteran,years_of_service,potential_hire,Education_level_id,account_id,position_id)
+        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s,%(edu_level)s,%(account_id)s,%(position_id)s);"""
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
@@ -55,11 +55,20 @@ class Employee:
         return ListOfEmployees
 
     @classmethod
-    def get_all_position():
+    def get_all_positions(cls):
         query =""" 
         SELECT * FROM positions
         JOIN Employees on employees.id = positions.employee_id
         """
+        results = connectToMySQL(cls.db).query_db(query)
+        print(results)
+        ListOfPositions = []
+        for p in results:
+            pos = {
+                "title": pos["title"],
+            }
+            ListOfPositions.append(cls(p))
+        return ListOfPositions
 
 # [{'id': 1, 'first_name': 'johnny', 'last_name': 'Doe', 'email': 'jd@me.com', 'gs_level': 'gs_level', 'veteran': 1, 'years_of_service': 6, 'potential_hire': 0, 'created_at': datetime.datetime(2022, 11, 17, 20, 31), 'updated_at': datetime.datetime(2022, 11, 17, 20, 31), 'account_id': 2, 'Education_level_id': 4, 'accounts.id': 2, 'account_name': 'Schriever Fire', 'accounts.created_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'accounts.updated_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'admin_user_id': 2}]
 

@@ -75,7 +75,8 @@ def admin_user_dashboard():
         return redirect('/')
     logged_in_admin = admin.Admin.get_by_id(session["admin_id"])
     AllEmployees = employee.Employee.get_all_employees()
-    return render_template('dashboard.html', logged_in_user = logged_in_admin,employees = AllEmployees)
+    AllPositions = employee.Employee.get_all_positions()
+    return render_template('dashboard.html', logged_in_user = logged_in_admin,employees = AllEmployees, positions=AllPositions)
 
 
 
