@@ -77,8 +77,8 @@ class Admin:
     @classmethod
     def register_admin(cls,data):
         query = """
-        INSERT INTO admin_users (email,password)
-        VALUES (%(email)s, %(password)s);
+        INSERT INTO admin_users (first_name,last_name,email,password)
+        VALUES (%(first_name)s,%(last_name)s,%(email)s, %(password)s);
         """
         return connectToMySQL(cls.db).query_db(query, data)
 
@@ -103,6 +103,22 @@ class Admin:
             return False
         else:
             print("smart girl")
+            return result[0]
+    
+    @classmethod
+    def get_account_by_admin_id(cls,admin_user_id):
+        print(admin_user_id)
+        data2 ={"admin_user_id":admin_user_id}
+        query = "SELECT * FROM accounts WHERE admin_user_id = %(admin_user_id)s;"
+        
+        result = connectToMySQL(cls.db).query_db(query,data2)
+        print("this is my result")
+        # print(result[0])
+        if len(result) ==0:
+            # print("=====GOTCHA=====")
+            return False
+        else:
+            # print("++++GET EM++++")
             return result[0]
 
     @classmethod

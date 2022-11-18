@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
-from flask_app.models import admin
+from flask_app.models import admin, employee
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -35,8 +35,10 @@ def register():
         return redirect('/signup')
 
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
-# then creates admin email 
+# then creates admin user 
     data = {
+        "first_name": request.form['first_name'],
+        "last_name": request.form['last_name'],
         "email": request.form['email'],
         "password": pw_hash,
     }
@@ -72,7 +74,9 @@ def admin_user_dashboard():
     if "admin_id" not in session:
         return redirect('/')
     logged_in_admin = admin.Admin.get_by_id(session["admin_id"])
-    return render_template('dashboard.html', logged_in_user = logged_in_admin)
+    AllEmployees = employee.Employee.get_all_employees()
+    return render_template('dashboard.html', logged_in_user = logged_in_admin,employees = AllEmployees)
+
 
 
 @app.route('/logout')

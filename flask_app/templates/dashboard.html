@@ -10,21 +10,22 @@
     <header>
         <div class="logo">My Next Promotion</div>
         <div class="userinfo">
-            <div class="user-name">John Doe</div>
+            <div class="user-name">Admin</div>
             <div class="user-icons">
                 <ul>
-                    <li>log Out</li>
+                    <a href="/logout"><li>log Out</li></a>
                 </ul>
             </div>
         </div>
     </header>
     <main>
         <h2>Admin Dashboard</h2>
-        <a href="/"><p>create new employee</p></a>
+        <a href="/create"><p>create new employee</p></a>
         <table class="">
             <thead>
             <tr>
-                <th scope="col">Employee</th> 
+                <th scope="col">First Name</th> 
+                <th scope="col">Last Name</th>
                 <th scope="col">Position</th>
                 <th scope="col">GS Level</th>
                 <th scope="col">Email</th>
@@ -34,10 +35,11 @@
             <tbody>
                 {% for employee  in employees %}
             <tr>
-                <td>{employee.name}</td>
-                <td>{employee.position}</td>
-                <td>{employee.gs_level}</td>
-                <td>{employee.email}</td>
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td>{{employee.position}}</td>
+                <td>{{employee.gs_level}}</td>
+                <td>{{employee.email}}</td>
                 <td> 
                     {% if session["user_id"] != employee.admin_id  %}
                     <a href="/">View</a>  

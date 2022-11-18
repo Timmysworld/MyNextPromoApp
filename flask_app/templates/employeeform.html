@@ -17,8 +17,8 @@
                     <label for="potential_hire">Potential Hire: </label>
                     <select name="potential_hire" id="potential_hire">
                         <option value="" placeholder=""></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
                     </select><br>
                     <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
                 </div>
@@ -42,24 +42,24 @@
                     <label for="veteran">Are you a veteran : </label>
                     <select name="veteran" id="veteran">
                         <option value="" aria-placeholder="are you a vet?"></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
                     </select>
                 </div>
                 <div>
                     <label for="positions">Choose your Position:</label>
                     <select name="positions" id="positions">
                         <option value="" placeholder="Select A Position"></option>
-                        <option value="Firefighter/EMR">Firefighter/EMR</option>
-                        <option value="Firefighter/EMT">Firefighter/EMT</option>
-                        <option value="Firefighter/Driver">Firefighter/Driver</option>
-                        <option value="Firefighter/EMT">Firefighter/Hazmat Tech</option>
-                        <option value="Lead Firefighter">Lead Firefighter</option>
-                        <option value="Station Captain">Station Captain</option>
-                        <option value="Asst.Chief of Operations">Asst.Chief of Operations</option>
-                        <option value="Asst.Chief of training">Asst.Chief of Training</option>
-                        <option value="Deputy Fire Chief">Deputy Fire Chief</option>
-                        <option value="Fire Chief">Fire Chief</option>
+                        <option value=1>Firefighter/EMR</option>
+                        <option value=2>Firefighter/EMT</option>
+                        <option value=3>Firefighter/Driver</option>
+                        <option value=4>Firefighter/Hazmat Tech</option>
+                        <option value=5>Lead Firefighter</option>
+                        <option value=6>Station Captain</option>
+                        <option value=7>Asst.Chief of Operations</option>
+                        <option value=8>Asst.Chief of Training</option>
+                        <option value=9>Deputy Fire Chief</option>
+                        <option value=10>Fire Chief</option>
                     </select>
                 </div>
 
@@ -67,50 +67,51 @@
                     <label for="edu_level">Education:</label>
                     <select name="edu_level" id="edu_level">
                         <option value="" placeholder=""></option>
-                        <option value="High School">High School</option>
-                        <option value="Some College">Some College</option>
-                        <option value="Bachelors Degree ">Bachelors Degree</option>
-                        <option value="Masters Degree ">Masters Degree</option>
-                        <option value="Doctors Degree ">Doctors Degree</option>
+                        <option value=1>High School</option>
+                        <option value=2>Some College</option>
+                        <option value=3>Associates Degree</option>
+                        <option value=4>Bachelors Degree</option>
+                        <option value=5>Masters Degree</option>
+                        <option value=6>Doctors Degree</option>
                     </select>
                 </div>
 
                 <div>
                     <p>Choose your current GS Level:</p>
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_3">
                     <label for="gs_level">GS 3</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_4">
                     <label for="gs_level">GS 4</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_5">
                     <label for="gs_level">GS 5</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_6">
                     <label for="gs_level">GS 6</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_7">
                     <label for="gs_level">GS 7</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_8">
                     <label for="gs_level">GS 8</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_9">
                     <label for="gs_level">GS 9</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_10">
                     <label for="gs_level">GS 10</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_11">
                     <label for="gs_level">GS 11</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs_12">
                     <label for="gs_level">GS 12</label><br>
 
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs 13">
                     <label for="gs_level">GS 13</label><br>
                     
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
+                    <input type="radio" id="gs_level" name="gs_level" value="gs 14">
                     <label for="gs_level">GS 14</label><br>
                 </div>
                 <div>
@@ -175,64 +176,64 @@
                 </div>
                 <div>
                     <p>Collateral Duties: </p>
-                    <input type="checkbox" id="SCBA Technician" name="SCBA Technician" value="SCBA Technician">
+                    <input type="checkbox" id="SCBA Technician" name="collateral_duties" value="SCBA Technician">
                     <label for="SCBA Technician ">SCBA Technician</label><br>
 
-                    <input type="checkbox" id="ARIS/1071s" name="ARIS/1071s" value="ARIS/1071s">
+                    <input type="checkbox" id="ARIS/1071s" name="collateral_duties" value="ARIS/1071s">
                     <label for="ARIS/1071s"> ARIS/1071s</label><br>
 
-                    <input type="checkbox" id="Fitness" name="" value="Fitness">
+                    <input type="checkbox" id="Fitness" name="collateral_duties" value="Fitness">
                     <label for="Fitness">Fitness </label><br>
                     
-                    <input type="checkbox" id="Drivers Training" name="" value="Drivers Training">
+                    <input type="checkbox" id="Drivers Training" name="collateral_duties" value="Drivers Training">
                     <label for="Drivers Training">Drivers Training</label><br>
                     
-                    <input type="checkbox" id="Detection Equipment" name="Detection Equipment" value="Detection Equipment">
+                    <input type="checkbox" id="Detection Equipment" name="collateral_duties" value="Detection Equipment">
                     <label for="Detection Equipment">Detection Equipment</label><br>
 
-                    <input type="checkbox" id="Fire Instructor Hazmat Suits" name="Fire Instructor Hazmat Suits" value="Fire Instructor Hazmat Suits">
+                    <input type="checkbox" id="Fire Instructor Hazmat Suits" name="collateral_duties" value="Fire Instructor Hazmat Suits">
                     <label for="Fire Instructor Hazmat Suits">Fire Instructor Hazmat Suits</label><br>
 
-                    <input type="checkbox" id="Hose" name="Hose" value="Hose">
+                    <input type="checkbox" id="Hose" name="collateral_duties" value="Hose">
                     <label for="Hose">Hose</label><br>
                     
-                    <input type="checkbox" id="Ladders" name="Ladders" value="Ladders">
+                    <input type="checkbox" id="Ladders" name="collateral_duties" value="Ladders">
                     <label for="Ladders">Ladders</label><br>
 
-                    <input type="checkbox" id="Medical" name="Medical" value="Medical">
+                    <input type="checkbox" id="Medical" name="collateral_duties" value="Medical">
                     <label for="Medical">Medical</label><br>
 
-                    <input type="checkbox" id="Power Equipment" name="Power Equipment" value="Power Equipment">
+                    <input type="checkbox" id="Power Equipment" name="collateral_duties" value="Power Equipment">
                     <label for="Power Equipment">Power Equipment</label><br>
 
-                    <input type="checkbox" id="PPE" name="PPE" value="PPE">
+                    <input type="checkbox" id="PPE" name="collateral_duties" value="PPE">
                     <label for="PPE">PPE</label><br>
 
                     <input type="checkbox" id="Pre Fire Plans" name="Pre Fire Plans" value="Pre Fire Plans">
                     <label for="Pre Fire Plans">Pre Fire Plans</label><br>
 
-                    <input type="checkbox" id="Pump Testing" name="Pump Testing" value="Pump Testing">
+                    <input type="checkbox" id="Pump Testing" name="collateral_duties" value="Pump Testing">
                     <label for="Pump Testing">Pump Testing</label><br>
 
-                    <input type="checkbox" id="Radios" name="Radios" value="Radios">
+                    <input type="checkbox" id="Radios" name="collateral_duties" value="Radios">
                     <label for="Radios">Radios</label><br>
                     
-                    <input type="checkbox" id="RPP" name="RPP" value="RPP">
+                    <input type="checkbox" id="RPP" name="collateral_duties" value="RPP">
                     <label for="RPP">RPP</label><br>
 
-                    <input type="checkbox" id="Tech Rescue" name="Tech Rescue" value="Tech Rescue">
+                    <input type="checkbox" id="Tech Rescue" name="collateral_duties" value="Tech Rescue">
                     <label for="Tech Rescue">Tech Rescue</label><br>
 
-                    <input type="checkbox" id="Supply" name="Supply" value="Supply">
+                    <input type="checkbox" id="Supply" name="collateral_duties" value="Supply">
                     <label for="Supply">Supply</label><br>
 
-                    <input type="checkbox" id="Tire & Agent" name="Tire & Agent" value="Tire & Agent">
+                    <input type="checkbox" id="Tire & Agent" name="collateral_duties" value="Tire & Agent">
                     <label for="Tire & Agent">Tire & Agent</label><br>
 
                     <input type="checkbox" id="T.Os" name="T.Os" value="T.Os">
                     <label for="T.Os">T.Os</label><br>
 
-                    <input type="checkbox" id="Wildland" name="Wildland" value="Wildland">
+                    <input type="checkbox" id="Wildland" name="collateral_duties" value="Wildland">
                     <label for="Wildland">Wildland</label><br>
                 </div>
 

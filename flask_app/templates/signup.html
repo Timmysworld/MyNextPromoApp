@@ -11,7 +11,7 @@
         <div></div>
         <div class="form-signup">
             <h2>Sign Up</h2>
-            <p>Already have an account? <a href="">Log In</a> </p>
+            <p>Already have an account? <a href="/signin">Log In</a> </p>
             <form action="/register/admin" method="post">
                 <div>
                     {% with messages = get_flashed_messages(category_filter=['register']) %}
@@ -23,6 +23,14 @@
                     {% endwith %}
                     <label for="account_name">Account Name: </label>
                     <input type="text" name="account_name">
+                </div>
+                <div>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name">
+                </div>
+                <div>
+                    <label for="last_name">last Name: </label>
+                    <input type="text" name="last_name">
                 </div>
                 <div>
                     <label for="email">Email: </label>
