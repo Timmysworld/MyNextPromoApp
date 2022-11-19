@@ -57,17 +57,17 @@ class Employee:
     @classmethod
     def get_all_positions(cls):
         query =""" 
-        SELECT * FROM positions
-        JOIN Employees on employees.id = positions.employee_id
+        SELECT * FROM positions 
+        JOIN Employees on positions.id = Employees.position_id
         """
         results = connectToMySQL(cls.db).query_db(query)
         print(results)
         ListOfPositions = []
         for p in results:
             pos = {
-                "title": pos["title"],
+                "title": p['title'],
             }
-            ListOfPositions.append(cls(p))
+            ListOfPositions.append(cls(p)) # FEW THINGS: WHEN I CHANGE THE P TO POS I GET key error 'id' when i change the dictionary key  i get key error positions when i change dictionary value i get key error id... but data so far is being input into the database.. 
         return ListOfPositions
 
 # [{'id': 1, 'first_name': 'johnny', 'last_name': 'Doe', 'email': 'jd@me.com', 'gs_level': 'gs_level', 'veteran': 1, 'years_of_service': 6, 'potential_hire': 0, 'created_at': datetime.datetime(2022, 11, 17, 20, 31), 'updated_at': datetime.datetime(2022, 11, 17, 20, 31), 'account_id': 2, 'Education_level_id': 4, 'accounts.id': 2, 'account_name': 'Schriever Fire', 'accounts.created_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'accounts.updated_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'admin_user_id': 2}]
