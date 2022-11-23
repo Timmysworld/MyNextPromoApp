@@ -36,7 +36,7 @@ class Employee:
         JOIN accounts ON accounts.id = employees.account_id
         """
         results =  connectToMySQL(cls.db).query_db(query)
-        print(results)
+        # print(results)
         ListOfEmployees = []
         for i in results:
             e = {
@@ -61,14 +61,126 @@ class Employee:
         JOIN Employees on positions.id = Employees.position_id
         """
         results = connectToMySQL(cls.db).query_db(query)
-        print(results)
+        # print(results)
         ListOfPositions = []
         for p in results:
             pos = {
+                "id": p["id"],
+                "first_name":  p['first_name'],
+                "last_name":  p['last_name'],
+                "email":  p['email'],
+                "gs_level":  p['gs_level'],
+                "veteran":  p['veteran'],
+                "years_of_service":  p['years_of_service'],
+                "potential_hire":  p['potential_hire'],
+                "created_at":  p['created_at'],
+                "updated_at":  p['updated_at'],
                 "title": p['title'],
             }
-            ListOfPositions.append(cls(p)) # FEW THINGS: WHEN I CHANGE THE P TO POS I GET key error 'id' when i change the dictionary key  i get key error positions when i change dictionary value i get key error id... but data so far is being input into the database.. 
+            ListOfPositions.append(cls(pos)) # FEW THINGS: WHY DO I HAVE TO ADD ALL THE EMPLOYEE DATA JUST TO GET IT TO WORK BUT STILL WILL NOT SHOW EMPLOYEES POSITION ON DASHBOARD???
         return ListOfPositions
+
+    @classmethod
+    def get_all_certifications(cls):
+        query ="""
+        SELECT * FROM certifications
+        JOIN Employees_has_certifications ON certification_id = Employees_has_certifications.Employee_id;
+        """
+        results = connectToMySQL(cls.db).query_db(query)
+        print(results)
+        ListOfCertifications = []
+        for c in results:
+            certs = {
+                "name": certs['name']
+            }
+            ListOfCertifications.append(cls(certs))
+        return ListOfCertifications
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # [{'id': 1, 'first_name': 'johnny', 'last_name': 'Doe', 'email': 'jd@me.com', 'gs_level': 'gs_level', 'veteran': 1, 'years_of_service': 6, 'potential_hire': 0, 'created_at': datetime.datetime(2022, 11, 17, 20, 31), 'updated_at': datetime.datetime(2022, 11, 17, 20, 31), 'account_id': 2, 'Education_level_id': 4, 'accounts.id': 2, 'account_name': 'Schriever Fire', 'accounts.created_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'accounts.updated_at': datetime.datetime(2022, 11, 17, 15, 51, 23), 'admin_user_id': 2}]
 

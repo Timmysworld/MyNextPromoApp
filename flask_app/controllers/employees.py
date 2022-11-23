@@ -28,6 +28,10 @@ def create_employee():
         "account_id": account
     }
 
+    employee_certification_data ={
+        "name": request.form.getlist['name']
+    }
+
     # employee_data2 ={
     #     "positions":request.form['positions'],
     #     "collateral_duties": request.form['collateral_duties'],
@@ -39,7 +43,7 @@ def create_employee():
     # }
 
     
-    employee_id = employee.Employee.create_employee(employee_data)
+    employee_id = employee.Employee.create_employee(employee_data,employee_certification_data)
     print("I just got REGISTERED")
     # employee_data2["employee_id"] = employee_id
     # employee_info = employee.Employee.create_employee(employee_data2)
