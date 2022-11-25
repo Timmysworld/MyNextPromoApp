@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Next Promotion</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='/dist/output.css')}}">
 </head>
-<body>
-    <div class="wrapper">
-        <p>Its time for </p>
-        <h1>My Next Promotion</h1>
-        <p>See where you stack against your competitors</p>
-        <div class="btn">
-            <a href="/signup"><button>Sign Up</button></a>
-            <a href="/signin"><button>Sign IN</button></a>
+<body class="bg-RBlue">
+    <div class="wrapper ">
+        <div class="landing-page">
+            <p class="text-amber-300 text-lg">Its time for </p>
+            <h1 class="title text-6xl font-extrabold">My Next Promotion</h1>
+            <p class="font-mono text-amber-300">See where you stack against your competitors</p>
+            <div class="mt-2 ">
+                <a href="/signup"><button class="btn p-1 bg-slate-400 border border-slate-400 hover:border-slate-900">Register</button></a>
+                <a href="/signin"><button class="btn p-1 bg-slate-400 border border-slate-400 hover:border-slate-900">Log in</button></a>
+            </div>
         </div>
-        
-
     </div>
 </body>
 </html>
