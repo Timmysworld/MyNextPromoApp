@@ -69,6 +69,9 @@ class Admin:
         if len(admin["password"]) < 8 or not bcrypt.check_password_hash (admin_in_database.password,admin["password"]):
             flash("Invalid information", "login")
             is_valid = False
+        if admin['confirmPass'] != admin['password']:
+            flash("Password does not Match Try Again", "login")
+            is_valid = False
         if is_valid:
             return admin_in_database
         else:

@@ -24,7 +24,7 @@
         <!-- add a search box  -->
         
         <a href="/create"><p>create new employee</p></a>
-        <table class="table-auto ">
+        <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
             <thead class="">
             <tr class="">
                 <th scope="col">First Name</th> 
@@ -36,15 +36,15 @@
             </tr>
             </thead>
             <tbody>
-                {% for employee  in employees %}
+                {% for employee  in positions %}
             <tr>
                 <td>{{employee.first_name}}</td>
                 <td>{{employee.last_name}}</td>
-                <td>{{employee.title}}</td> <!-- CAN NOT SEEM TO GET THE POSITION TO SHOW EITHER !!!!-->
+                <td>{{employee.position['title']}}</td>
                 <td>{{employee.gs_level}}</td>
                 <td>{{employee.email}}</td>
                 <td> 
-                    <a href="/">View</a>  
+                    <a href="/">View</a> | 
                     <a href="/">Comment</a> | <a href="/">Delete</a> | 
                 </td>
             </tr>

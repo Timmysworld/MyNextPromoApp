@@ -21,6 +21,8 @@ class Employee:
         self.potential_hire = data['potential_hire']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.position  = None;
+        self.certification = None;
 
     @classmethod
     def create_employee(cls,data):
@@ -61,11 +63,12 @@ class Employee:
         JOIN Employees on positions.id = Employees.position_id
         """
         results = connectToMySQL(cls.db).query_db(query)
-        # print(results)
+        print(results)
         ListOfPositions = []
-        for p in results:
-            pos = {
-                "id": p["id"],
+        for p  in results: 
+            ### Employee dictionary ###
+            e = {
+                "id": p['Employees.id'],
                 "first_name":  p['first_name'],
                 "last_name":  p['last_name'],
                 "email":  p['email'],
@@ -73,11 +76,20 @@ class Employee:
                 "veteran":  p['veteran'],
                 "years_of_service":  p['years_of_service'],
                 "potential_hire":  p['potential_hire'],
+                "created_at":  p['Employees.created_at'],
+                "updated_at":  p['Employees.updated_at'],
+            }
+            ### passed employee diction and cast as employee  set as variable emp ###
+            emp = Employee(e)
+            pos = {
+                "id": p['position_id'],
+                "title": p['title'],
                 "created_at":  p['created_at'],
                 "updated_at":  p['updated_at'],
-                "title": p['title'],
             }
-            ListOfPositions.append(cls(pos)) # FEW THINGS: WHY DO I HAVE TO ADD ALL THE EMPLOYEE DATA JUST TO GET IT TO WORK BUT STILL WILL NOT SHOW EMPLOYEES POSITION ON DASHBOARD???
+            ### pass position dictionary  into emp with dot notation ###
+            emp.position = pos
+            ListOfPositions.append(emp) 
         return ListOfPositions
 
     @classmethod
@@ -91,7 +103,7 @@ class Employee:
         ListOfCertifications = []
         for c in results:
             certs = {
-                "name": certs['name']
+                "certification": certs['name']
             }
             ListOfCertifications.append(cls(certs))
         return ListOfCertifications

@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Next Promotion | Log in Form</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='/dist/style.css')}}">
 </head>
 <body>
     <div class="wrapper">
         <div></div>
-        <div class="form-signup">
-            <h2>Log In</h2>
+        <div class="form-login">
+            <h2 class="text-2xl font-bold">Log In</h2>
             <!-- <p>Already have an account? Log In</p> -->
             <form action="/login" method="post">
                 <!-- <div>
@@ -21,12 +22,12 @@
                     {% with messages = get_flashed_messages(category_filter=['login']) %}
                         {% if messages %}
                             {% for message in messages %}
-                                <p class="text-warning">{{message}}</p>
+                                <p class="text--red-700">{{message}}</p>
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
                     <label for="email">Email: </label>
-                    <input type="email" name="email" id="">
+                    <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="">
                 </div>
                 <div>
                     <label for="password">Password</label>

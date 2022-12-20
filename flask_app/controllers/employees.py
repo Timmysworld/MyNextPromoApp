@@ -25,12 +25,13 @@ def create_employee():
         "potential_hire": request.form['potential_hire'],
         "edu_level": request.form['edu_level'],
         "position_id": request.form['positions'],
-        "account_id": account
+        "account_id": account,
+        "certification_id": request.form['certification']
     }
 
-    employee_certification_data ={
-        "name": request.form.getlist['name']
-    }
+    # employee_certification_data ={
+    #     "name": request.form['name']
+    # }
 
     # employee_data2 ={
     #     "positions":request.form['positions'],
@@ -43,7 +44,7 @@ def create_employee():
     # }
 
     
-    employee_id = employee.Employee.create_employee(employee_data,employee_certification_data)
+    employee_id = employee.Employee.create_employee(employee_data)
     print("I just got REGISTERED")
     # employee_data2["employee_id"] = employee_id
     # employee_info = employee.Employee.create_employee(employee_data2)

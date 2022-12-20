@@ -65,6 +65,9 @@ def login():
     if not bcrypt.check_password_hash(admin_in_database.password, request.form['password']):
         flash("Invalid Login Information", "login")
         return redirect('/signin')
+    if request.form['confirmPass'] != request.form['password']:
+        flash('Password does not match', "login")
+        return redirect('/signin')
     session['admin_id'] = admin_in_database.id
     print("CLEAR FOR DATA")
     return redirect('/admin/dashboard')
