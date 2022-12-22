@@ -99,13 +99,11 @@ class Admin:
         query = "SELECT * FROM accounts WHERE account_name = %(account_name)s;"
         
         result = connectToMySQL(cls.db).query_db(query,data2)
-        print("this is my result")
+        print("this is my result from get_account_by_name")
         # print(result[0])
         if len(result) ==0:
-            print("silly boy")
             return False
         else:
-            print("smart girl")
             return result[0]
     
     @classmethod
@@ -115,7 +113,7 @@ class Admin:
         query = "SELECT * FROM accounts WHERE admin_user_id = %(admin_user_id)s;"
         
         result = connectToMySQL(cls.db).query_db(query,data2)
-        print("this is my result")
+        print("this is my result from get_account_by_admin_id")
         # print(result[0])
         if len(result) ==0:
             # print("=====GOTCHA=====")
