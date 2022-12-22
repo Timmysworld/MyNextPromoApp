@@ -92,23 +92,13 @@ class Employee:
             ListOfPositions.append(emp) 
         return ListOfPositions
 
+
     @classmethod
-    def get_all_certifications(cls):
-        query ="""
-        SELECT * FROM certifications
-        JOIN Employees_has_certifications ON certification_id = Employees_has_certifications.Employee_id;
-        """
-        results = connectToMySQL(cls.db).query_db(query)
-        print(results)
-        ListOfCertifications = []
-        for c in results:
-            certs = {
-                "certification": certs['name']
-            }
-            ListOfCertifications.append(cls(certs))
-        return ListOfCertifications
-
-
+    def delete_employee(cls,id):
+        data = {"id": id}
+        query = "DELETE FROM employees WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        return results
 
 
 
