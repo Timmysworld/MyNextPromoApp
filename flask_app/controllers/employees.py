@@ -1,13 +1,13 @@
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
-from flask_app.models import employee,admin
+from flask_app.models import employee,admin,certification
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 @app.route('/create')
 def create():
 
-    return render_template('employeeform.html')
+    return render_template('employeeform.html', certifications=certification.Certifications.get_all_certifications()) # access the certification class function
 
 # CREATE EMPLOYEE 
 @app.route('/create/employee' ,methods=['POST'])
@@ -26,28 +26,32 @@ def create_employee():
         "edu_level": request.form['edu_level'],
         "position_id": request.form['positions'],
         "account_id": account,
-        "certification_id": request.form['certification']
+        
     }
-
-    # employee_certification_data ={
-    #     "name": request.form['name']
-    # }
-
-    # employee_data2 ={
-    #     "positions":request.form['positions'],
-    #     "collateral_duties": request.form['collateral_duties'],
-    # }
-
-    # employee_data_Array ={
-    #     "certifications":  [],
-    #     "other_qualification": [],
-    # }
-
-    
+    # sets employee id to the data from the form
     employee_id = employee.Employee.create_employee(employee_data)
+
+    # list of all certifications an employee has then loops through and add the employee id to be inserted into the employee has certification table
+    certs_list = request.form.getlist('certification')
+    print(certs_list)
+
+    updated = ''
+    for i in certs_list:
+        # print(type(i))
+        updated +=i[ : 3] + str(employee_id) + i[3 : ] + ','
+        # print(i)
+    updated = updated[:-1]
+    print(updated)
+
+    certs_list = certification.Certifications.employee_cert_list(updated)
+
     print("I just got REGISTERED")
-    # employee_data2["employee_id"] = employee_id
-    # employee_info = employee.Employee.create_employee(employee_data2)
-    # employee_data_Array[""]
     print("-------- employee_info ---------")
     return redirect ('/admin/dashboard')
+
+
+# DELETE EMPLOYEE
+@app.route('/employees/delete/<int:id>')
+def delete_employee(id):
+    employee.Employee.delete_employee(id)
+    return redirect('/admin/dashboard')
