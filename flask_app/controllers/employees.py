@@ -6,7 +6,6 @@ bcrypt = Bcrypt(app)
 
 @app.route('/create')
 def create():
-
     return render_template('employeeform.html', certifications=certification.Certifications.get_all_certifications()) # access the certification class function
 
 # CREATE EMPLOYEE 
