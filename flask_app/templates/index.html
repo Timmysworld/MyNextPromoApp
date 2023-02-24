@@ -5,20 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Next Promotion</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='/dist/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- GOOGLE FONTS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='/dist/style.css')}}"> -->
 </head>
 <body class="bg-RBlue">
-    <div class="wrapper ">
+    <div class="wrapper">
         <div class="landing-page">
-            <p class="text-amber-300 text-lg">Its time for </p>
-            <h1 class="title text-6xl font-extrabold">My Next Promotion</h1>
-            <p class="font-mono text-amber-300">See where you stack against your competitors</p>
-            <div class="mt-2 ">
-                <a href="/signup"><button class="btn p-1 bg-slate-400 border border-slate-400 hover:border-slate-900">Register</button></a>
-                <a href="/signin"><button class="btn p-1 bg-slate-400 border border-slate-400 hover:border-slate-900">Log in</button></a>
+            <p class="text">Its time for </p>
+            <h1 class="title">My Next Promotion</h1>
+            <p class="text">See where you stack against your competitors</p>
+            <div class="">
+                <a href="/signup"><button class="btn">Register</button></a>
+                <a href="/signin"><button class="btn">Log in</button></a>
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+    <!-- <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script> -->
 </body>
 </html>

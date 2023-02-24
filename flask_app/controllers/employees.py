@@ -1,12 +1,12 @@
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
-from flask_app.models import employee,admin,certification
+from flask_app.models import employee,admin,certification, collateral
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 @app.route('/create')
 def create():
-    return render_template('employeeform.html', certifications=certification.Certifications.get_all_certifications()) # access the certification class function
+    return render_template('employeeform.html', certifications=certification.Certifications.get_all_certifications(),  collateral = collateral.Collateral_Duties.get_all_collateral_duties()) # access the certification class function
 
 # CREATE EMPLOYEE 
 @app.route('/create/employee' ,methods=['POST'])
@@ -43,6 +43,18 @@ def create_employee():
     print(updated)
 
     certs_list = certification.Certifications.employee_cert_list(updated)
+
+    # employee collateral duties #
+    collateral_list = request.form.getlist('collateral_duties')
+    print(collateral_list)
+
+    cd= ''
+    for c in collateral_list:
+        cd +=c[ : 3]  +  str(employee_id) + c[3 : ] + ','
+    cd = cd[:-1]
+    print(cd)
+
+    collateral_list = collateral.Collateral_Duties.employee_cd_list(cd)
 
     print("I just got REGISTERED")
     print("-------- employee_info ---------")
