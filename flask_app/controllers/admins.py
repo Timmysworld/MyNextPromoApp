@@ -10,11 +10,11 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/signup')
+@app.route('/register')
 def admin_signup():
     return render_template('signup.html')
 
-@app.route('/signin')
+@app.route('/login')
 def admin_sign():
     return render_template('signin.html')
 
@@ -24,7 +24,7 @@ def register():
     print("going to register")
     is_admin_valid = admin.Admin.validate_admin(request.form)
     if not is_admin_valid:
-        return redirect('/signup')
+        return redirect('/register')
 # entire registration validation 
     data2 = {
         "account_name": request.form['account_name'].title()
@@ -32,7 +32,7 @@ def register():
     is_account_valid = admin.Admin.validate_admin_account(data2)
     if not is_account_valid:
         print("OMGOSHHHHHHHH")
-        return redirect('/signup')
+        return redirect('/register')
 
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
 # then creates admin user 
@@ -61,13 +61,13 @@ def login():
     print("CHECKING LOG INFO")
     if not admin_in_database:
         flash("Invalid Login Information", "login")
-        return redirect('/signin')
+        return redirect('/login')
     if not bcrypt.check_password_hash(admin_in_database.password, request.form['password']):
         flash("Invalid Login Information", "login")
-        return redirect('/signin')
+        return redirect('/login')
     if request.form['confirmPass'] != request.form['password']:
         flash('Password does not match', "login")
-        return redirect('/signin')
+        return redirect('/login')
     session['admin_id'] = admin_in_database.id
     print("CLEAR FOR DATA")
     return redirect('/admin/dashboard')
