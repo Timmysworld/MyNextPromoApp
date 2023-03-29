@@ -53,16 +53,22 @@ ul{
     "left-sidebar main main"
     "footer footer footer";    
 }
+.logout-btn{
+    margin-right: 60px;
+    font-size: 1.2rem!important;
+}
 header {
     grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
+    background-color: navy;
 }
 .logo{
     font-size: 2rem;
     padding: 10px;
+    font-family: 'Play', sans-serif;
 }
 .user-name>p{
     font-size: .8rem;
@@ -76,12 +82,14 @@ main {
 }
 footer {
     grid-area: footer;
+    background-color: navy;
 }
 .left-sidebar {
     grid-area: left-sidebar;
     min-height: 100vh;
     padding:10px;
     text-align: center;
+    background-color: silver;
 }
 /* LOGIN AND REGISTRATION  */
 .gradient-custom-2 {
@@ -124,4 +132,24 @@ footer {
 }
 .empl-header>div>a>p{
     margin-bottom: 0!important;
+}
+/* VIEW/SHOW EMPLOYEE */
+.profile{
+    width: 100vw;
+}
+.chart-box{
+    width: 50vw;
+}
+.chart{
+    padding: 10px;
+}
+.chart-header>h1{
+    margin: 0 auto;
+}
+.years_of_service{
+    width: 25px;
+    margin-left: 5px;
+}
+.positions{
+    width: 180px;
 }
