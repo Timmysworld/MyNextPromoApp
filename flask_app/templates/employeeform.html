@@ -19,12 +19,13 @@
 <body>
     <div class="wrapper">
         <!-- NAV BAR -->
-        <header class="bg-primary">
+        <header class="nav">
             <div class="logo">My Next Promotion</div>
+            <div><a href="/logout" class="btn btn-danger logout-btn">logout!</a></div>
         </header>
     
         <!-- SIDEBAR -->
-        <aside class="left-sidebar bg-dark">
+        <aside class="left-sidebar">
             <div class="sidebar-text">
                 <div class="user-name">
                     <p>Welcome</p>
@@ -46,12 +47,11 @@
                 </div>
                 
             </div>
-            <div class="form-signup mt-2 p-2">
-                <form action="/create/employee" method="post" class="row g-3">
+            <form action="/create/employee" method="post" class="row g-3 p-2">
                     <div class="col-md-12 d-flex justify-content-center mb-2">
                         <div class="col-md-4 justify-content-center">
                             <label for="potential_hire">Potential Hire: </label>
-                            <select name="potential_hire" id="potential_hire">
+                            <select name="potential_hire" class="form-control w-25" id="potential_hire">
                                 <option value="" placeholder=""></option>
                                 <option value=1>Yes</option>
                                 <option value=0>No</option>
@@ -60,7 +60,7 @@
                         <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
                         <div class="col-md-4 justify-content-center">
                             <label for="veteran">Are you a veteran : </label>
-                            <select name="veteran" id="veteran">
+                            <select name="veteran" class="form-control w-25" id="veteran">
                                 <option value="" aria-placeholder="are you a vet?"></option>
                                 <option value=1>Yes</option>
                                 <option value=0>No</option>
@@ -70,22 +70,22 @@
 
                     <div class="col-md-4">
                         <label for="first_name">First Name: </label>
-                        <input type="text" name="first_name">
+                        <input type="text" class="form-control" name="first_name">
                     </div>
 
                     <div class="col-md-4">
                         <label for="last_name">Last Name: </label>
-                        <input type="text" name="last_name">
+                        <input type="text" class="form-control" name="last_name">
                     </div>
 
                     <div class="col-md-4">
                         <label for="email">Email: </label>
-                        <input type="email" name="email" id="">
+                        <input type="email" class="form-control" name="email" id="">
                     </div>
                     
                     <div class="col-sm">
                         <label for="positions">Choose your Position:</label>
-                        <select name="positions" id="positions">
+                        <select name="positions" class="form-control" id="positions">
                             <option value="" placeholder="Select A Position"></option>
                             <option value=1>Firefighter/EMR</option>
                             <option value=2>Firefighter/EMT</option>
@@ -102,12 +102,12 @@
 
                     <div class="col-sm">
                         <label for="years_of-service">Years of Service</label>
-                        <input type="number" name="years_of_service">
+                        <input type="number" class="form-control" name="years_of_service">
                     </div>
 
                     <div  class="col-sm">
                         <label for="edu_level">Education:</label>
-                        <select name="edu_level" id="edu_level">
+                        <select name="edu_level" class="form-control" id="edu_level">
                             <option value="" placeholder=""></option>
                             <option value=1>High School</option>
                             <option value=2>Some College</option>
@@ -121,81 +121,77 @@
                     <div class="box col-md-6">
                         <p>Choose your current GS Level:</p>
                         <div class="d-flex justify-content-between">
-                        <div class="col">
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 3">
-                            <label for="gs_level">GS 3</label><br>
+                            <div class="col ">
+                                <input type="radio" id="gs_level"  name="gs_level" value="gs 3">
+                                <label for="gs_level">GS 3</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 4">
-                            <label for="gs_level">GS 4</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 4">
+                                <label for="gs_level">GS 4</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 5">
-                            <label for="gs_level">GS 5</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 5">
+                                <label for="gs_level">GS 5</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 6">
-                            <label for="gs_level">GS 6</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 6">
+                                <label for="gs_level">GS 6</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 7">
-                            <label for="gs_level">GS 7</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 7">
+                                <label for="gs_level">GS 7</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 8">
-                            <label for="gs_level">GS 8</label><br>
-                        </div>
-                        <div class="col">
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 9">
-                            <label for="gs_level">GS 9</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 8">
+                                <label for="gs_level">GS 8</label><br>
+                            </div>
+                            <div class="col">
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 9">
+                                <label for="gs_level">GS 9</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 10">
-                            <label for="gs_level">GS 10</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 10">
+                                <label for="gs_level">GS 10</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 11">
-                            <label for="gs_level">GS 11</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 11">
+                                <label for="gs_level">GS 11</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 12">
-                            <label for="gs_level">GS 12</label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 12">
+                                <label for="gs_level">GS 12</label><br>
 
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 13">
-                            <label for="gs_level">GS 13</label><br>
-                            
-                            <input type="radio" id="gs_level" name="gs_level" value="gs 14">
-                            <label for="gs_level">GS 14</label><br>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-7">
-                        <!-- NEED to FINISH ADDING CERTIFICATIONS -->
-                        <div class="">
-                            <p>Select all that Applies</p>
-                            {% for certs in certifications %}
-                
-                            <input type="checkbox" id="certification" name="certification" value="{{certs.id}}">
-                            <label for="certification ">{{certs.name}} </label><br>
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 13">
+                                <label for="gs_level">GS 13</label><br>
                                 
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 14">
+                                <label for="gs_level">GS 14</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- NEED to FINISH ADDING CERTIFICATIONS -->
+                        <div class="certs">
+                            <p>Select all that Applies</p>
+                            {% for certs in certifications%}
+                                <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
+                                <label for="certification ">{{certs.name}} </label><br>
                             {% endfor%}
                         </div>
-                        
                     </div>
                     
-                    <div>
+                    <div class="col-md-7">
                         <p>Collateral Duties: </p>
                         {% for cd in collateral %}
-                        <input type="checkbox" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
+                        <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
                         <label for="collateral_duties ">{{cd.name}}</label><br>
                         {% endfor %}
                     </div>
 
-                    <div>
+                    <div class="col-sm input-group mb-3">
                         <p>Please add any other qualifications you have:</p>
-                        <label for="other qualifications">Other Qualifications:</label><br>
-                        <input type="text" name="other qualifications">
-                        <button>Add</button>
+                        <input type="text" class="form-control" name="other qualifications">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add</button>
                         <!-- need to figure out how to input multiple items if need be -->
                     </div>
 
                     <a href=""><button type="submit"  class="btn btn-primary">Create Employee</button></a>
-                </form>
-            </main>
-        </div>
-        <footer class="bg-primary fixed-bottom">
+            </form>
+        </main>
+    </div>
+        <footer class="fixed-bottom">
             <ul class="nav justify-content-center ">
                 <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Home</a></li>
                 <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Settings</a></li>
