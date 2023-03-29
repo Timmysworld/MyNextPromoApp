@@ -83,14 +83,16 @@ class Admin:
         INSERT INTO admin_users (first_name,last_name,email,password)
         VALUES (%(first_name)s,%(last_name)s,%(email)s, %(password)s);
         """
-        return connectToMySQL(cls.db).query_db(query, data)
+        results= connectToMySQL(cls.db).query_db(query, data)
+        return cls(results[0])
 
     @classmethod
     def register_admin_account(cls, data):
         query = """
         INSERT INTO accounts (account_name, admin_user_id)
         VALUES (%(account_name)s, %(admin_user_id)s);"""
-        return connectToMySQL(cls.db).query_db(query, data)
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return cls(results[0])
 
     @classmethod
     def get_account_by_name(cls,account_name):
