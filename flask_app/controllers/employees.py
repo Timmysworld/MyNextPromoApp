@@ -67,6 +67,8 @@ def create_employee():
 def view_employee(id):
     OneEmployee = employee.Employee.get_employee(id)
     return render_template('show_employee.html', employee = OneEmployee)
+
+
 #UPDATE EMPLOYEE:
 
 
