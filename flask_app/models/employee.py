@@ -64,7 +64,7 @@ class Employee:
         WHERE id = %(id)s;
         """
         results = connectToMySQL(cls.db).query_db(query,data)
-        return results
+        return cls(results[0])
 
     @classmethod
     def get_all_positions(cls):
