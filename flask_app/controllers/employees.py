@@ -62,6 +62,14 @@ def create_employee():
     print("-------- employee_info ---------")
     return redirect ('/admin/dashboard')
 
+#READ EMPLOYEE: 
+@app.route('/view/employee/<int:id>')
+def view_employee(id):
+    OneEmployee = employee.Employee.get_employee(id)
+    return render_template('show_employee.html', employee = OneEmployee)
+#UPDATE EMPLOYEE:
+
+
 
 # DELETE EMPLOYEE
 @app.route('/employees/delete/<int:id>')
