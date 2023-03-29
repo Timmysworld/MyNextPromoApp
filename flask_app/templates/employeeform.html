@@ -166,10 +166,13 @@
                         <div class="">
                             <p>Select all that Applies</p>
                             {% for certs in certifications %}
+                
                             <input type="checkbox" id="certification" name="certification" value="{{certs.id}}">
                             <label for="certification ">{{certs.name}} </label><br>
+                                
                             {% endfor%}
                         </div>
+                        
                     </div>
                     
                     <div>
