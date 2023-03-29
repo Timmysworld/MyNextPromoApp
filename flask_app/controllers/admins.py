@@ -81,6 +81,8 @@ def admin_user_dashboard():
     AllPositions = employee.Employee.get_all_positions()
     return render_template('dashboard.html', logged_in_user = logged_in_admin,employees = AllEmployees, positions = AllPositions)
 
+
+
 @app.route('/logout')
 def logout():
     session.clear()
