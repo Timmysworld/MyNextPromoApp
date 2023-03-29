@@ -5,53 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-Dashboard</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='/dist/output.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- GOOGLE FONTS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo text-2xl font-bold">My Next Promotion</div>
-        <div class="userinfo">
-            <div class="user-name">{{logged_in_user.first_name}}</div> <!-- NAMED OF LOGGED IN USER WILL NOT SHOW  -->
-            <div class="user-icons">
-                <ul>
-                    <a href="/logout"><li>log Out</li></a>
-                </ul>
+    <div class="wrapper">
+        <!-- NAV BAR -->
+        <header class="bg-primary">
+            <div class="logo">My Next Promotion</div>
+            <a href="/logout" class="btn btn-outline-danger logout-btn">logout!</a>
+        </header>
+    
+        <!-- SIDEBAR -->
+        <aside class="left-sidebar bg-dark">
+            <div class="sidebar-text">
+                <div class="user-name">
+                    <p>Welcome, {{logged_in_user.first_name}} </p>
+                </div>
+                <hr>
+                <p><a href="/create"><p>Add Employee</p></a></p>
             </div>
-        </div>
-    </header>
-    <main>
-        <h2 class="text-2xl font-bold">Admin Dashboard</h2>
-        <!-- add a search box  -->
-        
-        <a href="/create"><p>create new employee</p></a>
-        <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            <thead class="">
-            <tr class="">
-                <th scope="col">First Name</th> 
-                <th scope="col">Last Name</th>
-                <th scope="col">Position</th>
-                <th scope="col">GS Level</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for employee  in positions %}
-            <tr>
-                <td>{{employee.first_name}}</td>
-                <td>{{employee.last_name}}</td>
-                <td>{{employee.position['title']}}</td>
-                <td>{{employee.gs_level}}</td>
-                <td>{{employee.email}}</td>
-                <td> 
-                    <a href="/">View</a> | 
-                    <a href="/">Comment</a> | <a href="/employees/delete/{{employee.id}}">Delete</a> | 
-                </td>
-            </tr>
-            {% endfor%}
-            </tbody>
-        </table>
-    </main>
+        </aside>
+    
+    
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <h2 class="">Admin Dashboard</h2>
+            <!-- add a search box  -->
+            
+            
+            <table class="table">
+                <thead class="">
+                <tr class="">
+                    <th scope="col">First Name</th> 
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">GS Level</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for employee  in positions %}
+                <tr>
+                    <td>{{employee.first_name}}</td>
+                    <td>{{employee.last_name}}</td>
+                    <td>{{employee.position['title']}}</td>
+                    <td>{{employee.gs_level}}</td>
+                    <td>{{employee.email}}</td>
+                    <td> 
+                        <a href="/">View</a> | 
+                        <a href="/">Comment</a> | <a href="/employees/delete/{{employee.id}}">Delete</a> | 
+                    </td>
+                </tr>
+                {% endfor%}
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <footer class="bg-primary fixed-bottom">
+        <ul class="nav justify-content-center ">
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Home</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Settings</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+        </ul>
+            <p class="mb-0 text-center text-white">&copy; 2023 Timothy Singleton & Jesenia Sanchez, Inc</p>
+    </footer>
+    </div>
 </body>
 </html>
 
