@@ -55,6 +55,16 @@ class Employee:
             }
             ListOfEmployees.append(cls(e))
         return ListOfEmployees
+    
+    @classmethod
+    def get_employee(cls, id):
+        data = {"id": id}
+        query =  """
+        SELECT * FROM Employees
+        WHERE id = %(id)s;
+        """
+        results = connectToMySQL(cls.db).query_db(query,data)
+        return results
 
     @classmethod
     def get_all_positions(cls):
