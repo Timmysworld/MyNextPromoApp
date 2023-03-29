@@ -6,6 +6,8 @@ bcrypt = Bcrypt(app)
 
 @app.route('/create')
 def create():
+    if "admin_id" not in session:
+        return redirect('/login')
     return render_template('employeeform.html', certifications=certification.Certifications.get_all_certifications(),  collateral = collateral.Collateral_Duties.get_all_collateral_duties()) # access the certification class function
 
 # CREATE EMPLOYEE 
