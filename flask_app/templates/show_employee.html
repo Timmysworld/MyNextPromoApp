@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Next Promotion | New Employee</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- GOOGLE FONTS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- NAV BAR -->
+        <header class="bg-primary">
+            <div class="logo">My Next Promotion</div>
+            <a href="/logout" class="btn btn-outline-danger logout-btn">logout!</a>
+        </header>
+
+        <!-- SIDEBAR -->
+        <aside class="left-sidebar bg-dark">
+            <div class="sidebar-text">
+                <div class="user-name">
+                    <p>Welcome</p>
+                </div>
+                <hr>
+                <p><a href="/create">
+                        <p>Add Employee</p>
+                    </a></p>
+            </div>
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <div class="empl-header">
+                <div class="title">
+                    <h2 class="text-primary">{{employee.first_name}}</h2>
+                </div>
+                <div>
+                    
+                    <a href="/admin/dashboard">
+                        <p class="btn btn-primary">dashboard</p>
+                    </a>
+                </div>
+
+            </div>
+            <div class="form-signup mt-2 p-2">
+                <form action="/create/employee" method="post" class="row g-3">
+                    <div class="col-md-12 d-flex justify-content-center mb-2">
+                        <div class="col-md-4 justify-content-center">
+                            <label for="potential_hire">Potential Hire: </label>
+                            <select name="potential_hire" id="potential_hire">
+                                <option value="" placeholder=""></option>
+                                <option value=1>Yes</option>
+                                <option value=0>No</option>
+                            </select><br>
+                        </div>
+                        <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
+                        <div class="col-md-4 justify-content-center">
+                            <label for="veteran">Are you a veteran : </label>
+                            <select name="veteran" id="veteran">
+                                <option value="" aria-placeholder="are you a vet?"></option>
+                                <option value=1>Yes</option>
+                                <option value=0>No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="first_name">First Name: </label>
+                        <input type="text" name="first_name">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="last_name">Last Name: </label>
+                        <input type="text" name="last_name">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="">
+                    </div>
+
+                    <div class="col-sm">
+                        <label for="positions">Choose your Position:</label>
+                        <select name="positions" id="positions">
+                            <option value="" placeholder="Select A Position"></option>
+                            <option value=1>Firefighter/EMR</option>
+                            <option value=2>Firefighter/EMT</option>
+                            <option value=3>Firefighter/Driver</option>
+                            <option value=4>Firefighter/Hazmat Tech</option>
+                            <option value=5>Lead Firefighter</option>
+                            <option value=6>Station Captain</option>
+                            <option value=7>Asst.Chief of Operations</option>
+                            <option value=8>Asst.Chief of Training</option>
+                            <option value=9>Deputy Fire Chief</option>
+                            <option value=10>Fire Chief</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm">
+                        <label for="years_of-service">Years of Service</label>
+                        <input type="number" name="years_of_service">
+                    </div>
+
+                    <div class="col-sm">
+                        <label for="edu_level">Education:</label>
+                        <select name="edu_level" id="edu_level">
+                            <option value="" placeholder=""></option>
+                            <option value=1>High School</option>
+                            <option value=2>Some College</option>
+                            <option value=3>Associates Degree</option>
+                            <option value=4>Bachelors Degree</option>
+                            <option value=5>Masters Degree</option>
+                            <option value=6>Doctors Degree</option>
+                        </select>
+                    </div>
+
+                    <div class="box col-md-6">
+                        <p>Choose your current GS Level:</p>
+                        <div class="d-flex justify-content-between">
+                            <div class="col">
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 3">
+                                <label for="gs_level">GS 3</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 4">
+                                <label for="gs_level">GS 4</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 5">
+                                <label for="gs_level">GS 5</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 6">
+                                <label for="gs_level">GS 6</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 7">
+                                <label for="gs_level">GS 7</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 8">
+                                <label for="gs_level">GS 8</label><br>
+                            </div>
+                            <div class="col">
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 9">
+                                <label for="gs_level">GS 9</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 10">
+                                <label for="gs_level">GS 10</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 11">
+                                <label for="gs_level">GS 11</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 12">
+                                <label for="gs_level">GS 12</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 13">
+                                <label for="gs_level">GS 13</label><br>
+
+                                <input type="radio" id="gs_level" name="gs_level" value="gs 14">
+                                <label for="gs_level">GS 14</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <!-- NEED to FINISH ADDING CERTIFICATIONS -->
+                        <div class="">
+                            <p>Select all that Applies</p>
+                            {% for certs in certifications %}
+                            <input type="checkbox" id="certification" name="certification" value="{{certs.id}}">
+                            <label for="certification ">{{certs.name}} </label><br>
+                            {% endfor%}
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <p>Collateral Duties: </p>
+                        {% for cd in collateral %}
+                        <input type="checkbox" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
+                        <label for="collateral_duties ">{{cd.name}}</label><br>
+                        {% endfor %}
+                    </div>
+
+                    <div>
+                        <p>Please add any other qualifications you have:</p>
+                        <label for="other qualifications">Other Qualifications:</label><br>
+                        <input type="text" name="other qualifications">
+                        <button>Add</button>
+                        <!-- need to figure out how to input multiple items if need be -->
+                    </div>
+
+                    <a href=""><button type="submit" class="btn btn-primary">Create Employee</button></a>
+                </form>
+        </main>
+    </div>
+    <footer class="bg-primary fixed-bottom">
+        <ul class="nav justify-content-center ">
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Home</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Settings</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+        </ul>
+        <p class="mb-0 text-center text-white">&copy; 2023 Timothy Singleton & Jesenia Sanchez, Inc</p>
+    </footer>
+</body>
+
+</html>
