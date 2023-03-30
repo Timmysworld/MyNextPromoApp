@@ -165,14 +165,20 @@
                         <!-- NEED to FINISH ADDING CERTIFICATIONS -->
                         <p>Select all that Applies</p>
                         <div class="certs w-100">
-                            <div class="w-50">
-                                {% for certs in certifications [:10]%}
+                            <div class="w-33">
+                                {% for certs in certifications [:7]%}
                                 <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
                                 <label for="certification ">{{certs.name}} </label><br>
                                 {% endfor%}
                             </div>
-                            <div class="w-50">
-                                {% for certs in certifications [11::]%}
+                            <div class="w-33">
+                                {% for certs in certifications [8:14]%}
+                                <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
+                                <label for="certification ">{{certs.name}} </label><br>
+                                {% endfor%}
+                            </div>
+                            <div class="33">
+                                {% for certs in certifications [15:]%}
                                 <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
                                 <label for="certification ">{{certs.name}} </label><br>
                                 {% endfor%}
@@ -184,14 +190,20 @@
                     <div class="col-md-7">
                         <p>Collateral Duties: </p>
                         <div class="collateral w-100">
-                            <div class="w-50">
-                                {% for cd in collateral [:10] %}
+                            <div class="w-33">
+                                {% for cd in collateral [:6] %}
                                 <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
                                 <label for="collateral_duties ">{{cd.name}}</label><br>
                                 {% endfor %}
                             </div>
-                            <div class="w-50">
-                                {% for cd in collateral [9:] %}
+                            <div class="w-33">
+                                {% for cd in collateral [7:12] %}
+                                <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
+                                <label for="collateral_duties ">{{cd.name}}</label><br>
+                                {% endfor %}
+                            </div>
+                            <div class="w-33">
+                                {% for cd in collateral [13:] %}
                                 <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
                                 <label for="collateral_duties ">{{cd.name}}</label><br>
                                 {% endfor %}
@@ -206,7 +218,7 @@
                         <!-- need to figure out how to input multiple items if need be -->
                     </div>
                     <div>
-                        <a href=""><button type="submit"  class="btn btn-primary">Create Employee</button></a>
+                        <a href="/create/employee"><button type="submit"  class="btn btn-primary">Create Employee</button></a>
                     </div>
                     
             </form>

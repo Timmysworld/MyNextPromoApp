@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Next Promotion | New Employee</title>
+    <title>My Next Promotion | Update Employee</title>
 </head>
 <body>
     <div class="wrapper">
         <div></div>
         <div class="form-signup">
-            <h2>Create New Employee</h2>
+            <h2>Update Employee</h2>
             <a href="/admin/dashboard"><p>dashboard</p></a>
             <form action="/create/employee" method="post">
                 <div>
-                    <label for="potential_hire">Potential Hire: </label>
+                    <label for="potential_hire">Potential Hire:</label>
                     <select name="potential_hire" id="potential_hire">
                         <option value="" placeholder=""></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select><br>
-                    <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
                 </div>
                 <div>
                     <label for="years_of-service">Years of Service</label>
@@ -48,7 +47,7 @@
                 </div>
                 <div>
                     <label for="positions">Choose your Position:</label>
-                    <select name="positions" id="positions">
+                    <select name="positions" id="positions" value="{{positions}}">
                         <option value="" placeholder="Select A Position"></option>
                         <option value="Firefighter/EMR">Firefighter/EMR</option>
                         <option value="Firefighter/EMT">Firefighter/EMT</option>
@@ -65,7 +64,7 @@
 
                 <div>
                     <label for="edu_level">Education:</label>
-                    <select name="edu_level" id="edu_level">
+                    <select name="edu_level" id="edu_level" value="{{edu_level}}">
                         <option value="" placeholder=""></option>
                         <option value="High School">High School</option>
                         <option value="Some College">Some College</option>
@@ -114,7 +113,6 @@
                     <label for="gs_level">GS 14</label><br>
                 </div>
                 <div>
-                    <!-- NEED to FINISH ADDING CERTIFICATIONS -->
                     <p>Select all that Applies</p>
                     <input type="checkbox" id="Firefighter I" name="Firefighter I" value="Firefighter I">
                     <label for="Firefighter I"> Firefighter I</label><br>
@@ -239,12 +237,11 @@
                 <div>
                     <p>Please add any other qualifications you have:</p>
                     <label for="other qualifications">Other Qualifications:</label><br>
-                    <input type="text" name="other qualifications">
-                    <button>Add</button>
-                    <!-- need to figure out how to input multiple items if need be -->
+                    <input type="text" name="other qualifications" value="{{other qualifications}}">
+                    <button>Update</button>
                 </div>
 
-                <a href=""><button type="submit">Create Employee</button></a>
+                <a href=""><button type="submit">Update Employee</button></a>
             </form>
         </div>
     </div>

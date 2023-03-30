@@ -37,7 +37,6 @@
             </div>
         </aside>
 
-
         <!-- MAIN CONTENT -->
         <main class="content">
             <div class="employee-profile">
@@ -46,7 +45,7 @@
                         <h2 class="text">{{employee.first_name}} {{employee.last_name}}</h2>
                     </div>
                     <div>
-                        <a href=""><button type="submit" class="btn btn-primary">Edit</button></a>
+                        <a href="/edit/employee/{{employee.id}}"><button type="submit" class="btn btn-primary">Edit</button></a>
                         <a href="/admin/dashboard">
                             <p class="btn btn-primary">dashboard</p>
                         </a>
@@ -60,7 +59,7 @@
                                 <div class="col-md-4 justify-content-center">
                                     <label for="potential_hire">Potential Hire: </label>
                                     <select name="potential_hire" class="form-control" id="potential_hire">
-                                        <option value="" placeholder=""></option>
+                                        <option value=""placeholder="choose one"></option>
                                         <option value=1>Yes</option>
                                         <option value=0>No</option>
                                     </select><br>
@@ -126,7 +125,7 @@
                                 </select>
                             </div>
 
-                            <div class="box col-md-6">
+                            <div class="box col-md-12">
                                 <p>Choose your current GS Level:</p>
                                 <div class="d-flex justify-content-between">
                                     <div class="col">
@@ -169,8 +168,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <!-- NEED to FINISH ADDING CERTIFICATIONS -->
+                                <p>All Certifications</p>
                                 <div class="certs w-100">
                                     <div class="w-50">
                                         {% for certs in certifications [:10]%}
@@ -190,10 +190,20 @@
 
                             <div class="col-md-7">
                                 <p>Collateral Duties: </p>
-                                {% for cd in collateral %}
-                                <input type="checkbox" class="form-control" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
-                                <label for="collateral_duties ">{{cd.name}}</label><br>
-                                {% endfor %}
+                                <div class="collateral">
+                                    <div class="w-50">
+                                        {% for cd in collateral [:9]%}
+                                        <input type="checkbox" class="" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
+                                        <label for="collateral_duties ">{{cd.name}}</label><br>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="w-50">
+                                        {% for cd in collateral [10:] %}
+                                        <input type="checkbox" class="f" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
+                                        <label for="collateral_duties ">{{cd.name}}</label><br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-sm input-group mb-3">

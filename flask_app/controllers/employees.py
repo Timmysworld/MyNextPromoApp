@@ -34,27 +34,26 @@ def create_employee():
 
     # list of all certifications an employee has then loops through and add the employee id to be inserted into the employee has certification table
     certs_list = request.form.getlist('certification')
-    print(certs_list)
-
+    # print(certs_list)
     updated = ''
     for i in certs_list:
         # print(type(i))
-        updated +=i[ : 3] + str(employee_id) + i[3 : ] + ','
+        updated += i[ : 3] + str(employee_id) + i[3 : ] + ','
         # print(i)
     updated = updated[:-1]
-    print(updated)
+    # print(updated)
 
     certs_list = certification.Certifications.employee_cert_list(updated)
 
     # employee collateral duties #
     collateral_list = request.form.getlist('collateral_duties')
-    print(collateral_list)
+    # print(collateral_list)
 
     cd= ''
     for c in collateral_list:
         cd +=c[ : 3]  +  str(employee_id) + c[3 : ] + ','
     cd = cd[:-1]
-    print(cd)
+    # print(cd)
 
     collateral_list = collateral.Collateral_Duties.employee_cd_list(cd)
 
@@ -67,10 +66,43 @@ def create_employee():
 def view_employee(id):
     OneEmployee = employee.Employee.get_employee(id)
     certifications = certification.Certifications.get_all_certifications()
-    return render_template('show_employee.html', employee = OneEmployee, certifications=certifications)
+    cd = collateral.Collateral_Duties.get_all_collateral_duties()
+    return render_template('show_employee.html', employee = OneEmployee, certifications=certifications, collateral=cd)
+
 #UPDATE EMPLOYEE:
+@app.route("/edit/employee/<int:id>")
+def edit_employee(id):
+    if "admin_id" not in session:
+        return redirect("/register")
+    # data = {
+    #     "id":id
+    # }
+    # user_data = {
+    #     "id":session["user_id"]
+    # }
+    return render_template("edit_employee.html")
 
+# edit=employee.edit_one(data), user=admin.get_by_id(user_data)
 
+@app.route("/update/employee/<int:id>", methods=["POST"])
+def update_employee():
+    if "user_id" not in session:
+        return redirect("/register")
+    if not employee.validate_employee(request.form):
+        return redirect("/create/employee")
+    data = {
+        "first_name": request.form['first_name'],
+        "last_name": request.form['last_name'],
+        "email": request.form['email'],
+        "gs_level": request.form['gs_level'],
+        "veteran": request.form['veteran'],
+        "years_of_service": request.form['years_of_service'],
+        "potential_hire": request.form['potential_hire'],
+        "edu_level": request.form['edu_level'],
+        "position_id": request.form['positions'],
+    }
+    employee.update(data)
+    return redirect("/dashboard")
 
 # DELETE EMPLOYEE
 @app.route('/employees/delete/<int:id>')

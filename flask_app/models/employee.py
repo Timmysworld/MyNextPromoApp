@@ -28,7 +28,8 @@ class Employee:
     def create_employee(cls,data):
         query = """
         INSERT INTO employees (first_name,last_name,email,gs_level,veteran,years_of_service,potential_hire,Education_level_id,account_id,position_id)
-        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s,%(edu_level)s,%(account_id)s,%(position_id)s);"""
+        VALUES (%(first_name)s,%(last_name)s,%(email)s,%(gs_level)s,%(veteran)s,%(years_of_service)s,%(potential_hire)s,%(edu_level)s,%(account_id)s,%(position_id)s);
+        """
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
@@ -101,7 +102,17 @@ class Employee:
             emp.position = pos
             ListOfPositions.append(emp) 
         return ListOfPositions
+    
 
+    @classmethod
+    def update(cls, data):
+        query = """
+        UPDATE employee SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s, 
+        gs_level=%(gs_level)s, veteran=%(veteran)s,years_of_service=%(years_of_service)s,
+        potential_hire=%(potential_hire)s,edu_level=%(edu_level)s,position_id=%(positions)s,
+        updated_at=NOW() WHERE id = %(id)s;
+        """ 
+        return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
     def delete_employee(cls,id):
