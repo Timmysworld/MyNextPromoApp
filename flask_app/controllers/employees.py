@@ -66,8 +66,8 @@ def create_employee():
 @app.route('/view/employee/<int:id>')
 def view_employee(id):
     OneEmployee = employee.Employee.get_employee(id)
-    return render_template('show_employee.html', employee = OneEmployee)
-
+    certifications = certification.Certifications.get_all_certifications()
+    return render_template('show_employee.html', employee = OneEmployee, certifications=certifications)
 #UPDATE EMPLOYEE:
 
 
