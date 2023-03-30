@@ -131,7 +131,7 @@ class Admin:
         print(data)
         query = "SELECT * FROM admin_users WHERE email = %(email)s;"
         result = connectToMySQL(cls.db).query_db(query,data)
-        print(result)
+        print(result, "*"*20)
         if len(result) == 0:
             return False
         else:
@@ -144,4 +144,5 @@ class Admin:
         print(data)
         query = "SELECT * FROM admin_users WHERE id = %(id)s;"
         result = connectToMySQL(cls.db).query_db(query,data)
+        print(result,"*"*20)
         return cls(result[0])

@@ -171,13 +171,20 @@
                             </div>
                             <div class="col-md-6">
                                 <!-- NEED to FINISH ADDING CERTIFICATIONS -->
-                                <div class="">
-                                    <p>Select all that Applies</p>
-                                    {% for certs in certifications |batch (2, '&nbsp;')%}
-                                    
-                                        <input type="checkbox" class="form-control" id="certification" name="certification" value="{{certs.id}}">
+                                <div class="certs w-100">
+                                    <div class="w-50">
+                                        {% for certs in certifications [:10]%}
+                                        <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
                                         <label for="certification ">{{certs.name}} </label><br>
-                                    {% endfor%}
+                                        {% endfor%}
+                                    </div>
+                                    <div class="w-50">
+                                        {% for certs in certifications [11:]%}
+                                        <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
+                                        <label for="certification ">{{certs.name}} </label><br>
+                                        {% endfor%}
+                                    </div>
+                                    
                                 </div>
                             </div>
 

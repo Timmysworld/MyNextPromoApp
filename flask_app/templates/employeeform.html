@@ -83,7 +83,7 @@
                         <input type="email" class="form-control" name="email" id="">
                     </div>
                     
-                    <div class="col-sm">
+                    <div class="col-sm-4">
                         <label for="positions">Choose your Position:</label>
                         <select name="positions" class="form-control" id="positions">
                             <option value="" placeholder="Select A Position"></option>
@@ -100,12 +100,12 @@
                         </select>
                     </div>
 
-                    <div class="col-sm">
+                    <div class="col-sm-4">
                         <label for="years_of-service">Years of Service</label>
                         <input type="number" class="form-control" name="years_of_service">
                     </div>
 
-                    <div  class="col-sm">
+                    <div  class="col-sm-4">
                         <label for="edu_level">Education:</label>
                         <select name="edu_level" class="form-control" id="edu_level">
                             <option value="" placeholder=""></option>
@@ -118,7 +118,7 @@
                         </select>
                     </div>
 
-                    <div class="box col-md-6">
+                    <div class="box col-md-6 align-items-center">
                         <p>Choose your current GS Level:</p>
                         <div class="d-flex justify-content-between">
                             <div class="col ">
@@ -163,21 +163,40 @@
                     </div>
                     <div class="col-md-6">
                         <!-- NEED to FINISH ADDING CERTIFICATIONS -->
-                        <div class="certs">
-                            <p>Select all that Applies</p>
-                            {% for certs in certifications%}
+                        <p>Select all that Applies</p>
+                        <div class="certs w-100">
+                            <div class="w-50">
+                                {% for certs in certifications [:10]%}
                                 <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
                                 <label for="certification ">{{certs.name}} </label><br>
-                            {% endfor%}
+                                {% endfor%}
+                            </div>
+                            <div class="w-50">
+                                {% for certs in certifications [11::]%}
+                                <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
+                                <label for="certification ">{{certs.name}} </label><br>
+                                {% endfor%}
+                            </div>
+                            
                         </div>
                     </div>
                     
                     <div class="col-md-7">
                         <p>Collateral Duties: </p>
-                        {% for cd in collateral %}
-                        <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
-                        <label for="collateral_duties ">{{cd.name}}</label><br>
-                        {% endfor %}
+                        <div class="collateral w-100">
+                            <div class="w-50">
+                                {% for cd in collateral [:10] %}
+                                <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
+                                <label for="collateral_duties ">{{cd.name}}</label><br>
+                                {% endfor %}
+                            </div>
+                            <div class="w-50">
+                                {% for cd in collateral [9:] %}
+                                <input type="checkbox" id="collateral_duties" class="" name="collateral_duties" value="{{cd.id}}">
+                                <label for="collateral_duties ">{{cd.name}}</label><br>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-sm input-group mb-3">
@@ -186,8 +205,10 @@
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add</button>
                         <!-- need to figure out how to input multiple items if need be -->
                     </div>
-
-                    <a href=""><button type="submit"  class="btn btn-primary">Create Employee</button></a>
+                    <div>
+                        <a href=""><button type="submit"  class="btn btn-primary">Create Employee</button></a>
+                    </div>
+                    
             </form>
         </main>
     </div>
