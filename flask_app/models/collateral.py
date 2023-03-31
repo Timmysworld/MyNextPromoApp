@@ -28,3 +28,4 @@ class Collateral_Duties:
         results = connectToMySQL(cls.db).query_db(query)
         print(results)
         return results
+    

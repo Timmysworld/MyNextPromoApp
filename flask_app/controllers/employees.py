@@ -38,10 +38,15 @@ def create_employee():
     updated = ''
     for i in certs_list:
         # print(type(i))
-        updated += i[ : 3] + str(employee_id) + i[3 : ] + ','
+        # updated += i[ : 3] + str(employee_id) + i[3 : ] + ','
+        x = i.split(',')
+        y =x[0]
+        z = f"{y},{employee_id}),"
+        print(z)
+        updated += z
         # print(i)
     updated = updated[:-1]
-    # print(updated)
+    print(updated)
 
     certs_list = certification.Certifications.employee_cert_list(updated)
 
@@ -51,7 +56,13 @@ def create_employee():
 
     cd= ''
     for c in collateral_list:
-        cd +=c[ : 3]  +  str(employee_id) + c[3 : ] + ','
+        # print(c)
+        # cd +=c[ : 3]  +  str(employee_id) + c[3 : ] + ','
+        x = c.split(',')
+        cid = x[0]
+        z = f"{cid},{employee_id}),"
+        print(z)
+        cd += z
     cd = cd[:-1]
     # print(cd)
 
@@ -65,9 +76,12 @@ def create_employee():
 @app.route('/view/employee/<int:id>')
 def view_employee(id):
     OneEmployee = employee.Employee.get_employee(id)
-    certifications = certification.Certifications.get_all_certifications()
+    # certs = certification.Certifications.get_all_certifications()
     cd = collateral.Collateral_Duties.get_all_collateral_duties()
-    return render_template('show_employee.html', employee = OneEmployee, certifications=certifications, collateral=cd)
+    positions = employee.Employee.get_all_positions()
+    # education = employee.Employee.get_all_edu_level(id)
+    # certifications= certification.Certifications.get_certification_by_id(id)
+    return render_template('show_employee.html', employee = OneEmployee, collateral=cd, position=positions)
 
 #UPDATE EMPLOYEE:
 @app.route("/edit/employee/<int:id>")
@@ -80,7 +94,9 @@ def edit_employee(id):
     # user_data = {
     #     "id":session["user_id"]
     # }
-    return render_template("edit_employee.html")
+    OneEmployee = employee.Employee.get_employee(id)
+    positions = employee.Employee.get_all_positions()
+    return render_template("edit_employee.html", employee = OneEmployee, position=positions)
 
 # edit=employee.edit_one(data), user=admin.get_by_id(user_data)
 

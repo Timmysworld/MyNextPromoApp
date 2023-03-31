@@ -20,8 +20,33 @@ class Certifications:
             ListOfCertifications.append(cls(c))
         print(ListOfCertifications)
         # sends all certifications back to the html form to be looped
-        return ListOfCertifications  
+        return ListOfCertifications 
+    
+    # @classmethod
+    # def get_certification_by_id(cls,data):
+    #     query = """
 
+    #     SELECT certifications.id, certifications.name
+    #     FROM Employees_has_certification
+    #     INNER JOIN certifications  
+    #     ON Employees_has_certification.certification_id = certifications.id
+    #     INNER JOIN Employees 
+    #     ON Employees_has_certification.employee_id = Employee.id
+    #     WHERE Employees.id = %(id)s
+
+    #     """
+    #     results = connectToMySQL(cls.db).query_db(query,data)
+    #     print(results)
+    #     certlist= []
+    #     for cert in results:
+    #         one = {
+    #             'id': cert['id'],
+    #             'name': cert['name'],
+    #             'created_at': "",
+    #             'updated_at': ""
+    #             }
+    #         certlist.append(one)
+    #     return certlist
     #create the relationship and  insert  into employee has certification table 
     @classmethod
     def employee_cert_list(cls,data):

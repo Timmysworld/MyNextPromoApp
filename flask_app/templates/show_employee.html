@@ -33,7 +33,9 @@
                     <p>Welcome</p>
                 </div>
                 <hr>
-                <p><a href="/create"><p>Add Employee</p></a></p>
+                <p><a href="/create">
+                        <p>Add Employee</p>
+                    </a></p>
             </div>
         </aside>
 
@@ -45,7 +47,8 @@
                         <h2 class="text">{{employee.first_name}} {{employee.last_name}}</h2>
                     </div>
                     <div>
-                        <a href="/edit/employee/{{employee.id}}"><button type="submit" class="btn btn-primary">Edit</button></a>
+                        <a href="/edit/employee/{{employee.id}}"><button type="submit"
+                                class="btn btn-primary">Edit</button></a>
                         <a href="/admin/dashboard">
                             <p class="btn btn-primary">dashboard</p>
                         </a>
@@ -56,161 +59,75 @@
                     <div class="form-signup mt-2 p-2 w-50">
                         <form action="/create/employee" method="post" class="row g-3">
                             <div class="col-md-12 d-flex justify-content-center mb-2">
+
                                 <div class="col-md-4 justify-content-center">
                                     <label for="potential_hire">Potential Hire: </label>
-                                    <select name="potential_hire" class="form-control" id="potential_hire">
-                                        <option value=""placeholder="choose one"></option>
-                                        <option value=1>Yes</option>
-                                        <option value=0>No</option>
-                                    </select><br>
+                                    <select name="potential_hire" class="form-control" id="potential_hire" disabled>
+                                        <option>
+                                            {% if employee.potential_hire == 1 %}
+                                            Yes
+                                            {% else %}
+                                            No
+                                            {% endif%}
+                                        </option>
+
+                                    </select>
                                 </div>
                                 <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
                                 <div class="col-md-4 justify-content-center ">
                                     <label for="veteran">Are you a veteran : </label>
-                                    <select name="veteran" class="form-control" id="veteran">
-                                        <option value="" aria-placeholder="are you a vet?"></option>
-                                        <option value=1>Yes</option>
-                                        <option value=0>No</option>
+                                    <select name="veteran" class="form-control" id="veteran" disabled>
+                                        <option>
+                                            {% if employee.veteran ==1 %}
+                                            Yes
+                                            {% else %}
+                                            No
+                                            {% endif %}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="first_name">First Name: </label>
-                                <input type="text" class="form-control" name="first_name">
+                                <input type="text" class="form-control" name="first_name"
+                                    value="{{employee.first_name}}" disabled>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="last_name">Last Name: </label>
-                                <input type="text" class="form-control" name="last_name">
+                                <input type="text" class="form-control" name="last_name" value="{{employee.last_name}}"
+                                    disabled>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="email">Email: </label>
-                                <input type="email" class="form-control" name="email" id="">
+                                <input type="email" class="form-control" name="email" value="{{employee.email}}"
+                                    disabled>
                             </div>
 
                             <div class="col-sm-4">
                                 <label for="positions">Choose your Position:</label>
-                                <select name="positions" id="positions" class="positions form-control">
-                                    <option value="" placeholder="Select A Position"></option>
-                                    <option value=1>Firefighter/EMR</option>
-                                    <option value=2>Firefighter/EMT</option>
-                                    <option value=3>Firefighter/Driver</option>
-                                    <option value=4>Firefighter/Hazmat Tech</option>
-                                    <option value=5>Lead Firefighter</option>
-                                    <option value=6>Station Captain</option>
-                                    <option value=7>Asst.Chief of Operations</option>
-                                    <option value=8>Asst.Chief of Training</option>
-                                    <option value=9>Deputy Fire Chief</option>
-                                    <option value=10>Fire Chief</option>
+                                <select name="positions" id="positions" class="positions form-control" disabled>
+                                    {% for employee in position %}
+                                    <option>{{employee.position['title']}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
 
                             <div class="col-sm-4 ">
                                 <label for="years_of-service">Years of Service</label>
-                                <input type="number" class="years_of_service form-control" name="years_of_service">
+                                <input type="number" class="years_of_service form-control" name="years_of_service"
+                                    value="{{employee.years_of_service}}" disabled>
                             </div>
-
-                            <div class="col-sm-4">
-                                <label for="edu_level" class="">Education:</label>
-                                <select name="edu_level" id="edu_level" class="form-control">
-                                    <option value="" placeholder=""></option>
-                                    <option value=1>High School</option>
-                                    <option value=2>Some College</option>
-                                    <option value=3>Associates Degree</option>
-                                    <option value=4>Bachelors Degree</option>
-                                    <option value=5>Masters Degree</option>
-                                    <option value=6>Doctors Degree</option>
-                                </select>
-                            </div>
-
                             <div class="box col-md-12">
                                 <p>Choose your current GS Level:</p>
                                 <div class="d-flex justify-content-between">
                                     <div class="col">
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 3">
-                                        <label for="gs_level">GS 3</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 4">
-                                        <label for="gs_level">GS 4</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 5">
-                                        <label for="gs_level">GS 5</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 6">
-                                        <label for="gs_level">GS 6</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 7">
-                                        <label for="gs_level">GS 7</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 8">
-                                        <label for="gs_level">GS 8</label><br>
-                                    </div>
-                                    <div class="col">
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 9">
-                                        <label for="gs_level">GS 9</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 10">
-                                        <label for="gs_level">GS 10</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 11">
-                                        <label for="gs_level">GS 11</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 12">
-                                        <label for="gs_level">GS 12</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 13">
-                                        <label for="gs_level">GS 13</label><br>
-
-                                        <input type="radio" id="gs_level" name="gs_level" value="gs 14">
-                                        <label for="gs_level">GS 14</label><br>
+                                        <input type="text" id="gs_level" name="gs_level" value="{{employee.gs_level}}"disabled>
+                                        <label for="gs_level"></label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <!-- NEED to FINISH ADDING CERTIFICATIONS -->
-                                <p>All Certifications</p>
-                                <div class="certs w-100">
-                                    <div class="w-50">
-                                        {% for certs in certifications [:10]%}
-                                        <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
-                                        <label for="certification ">{{certs.name}} </label><br>
-                                        {% endfor%}
-                                    </div>
-                                    <div class="w-50">
-                                        {% for certs in certifications [11:]%}
-                                        <input type="checkbox" id="certification" class="" name="certification" value="{{certs.id}}">
-                                        <label for="certification ">{{certs.name}} </label><br>
-                                        {% endfor%}
-                                    </div>
-                                    
-                                </div>
-                            </div>
-
-                            <div class="col-md-7">
-                                <p>Collateral Duties: </p>
-                                <div class="collateral">
-                                    <div class="w-50">
-                                        {% for cd in collateral [:9]%}
-                                        <input type="checkbox" class="" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
-                                        <label for="collateral_duties ">{{cd.name}}</label><br>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="w-50">
-                                        {% for cd in collateral [10:] %}
-                                        <input type="checkbox" class="f" id="collateral_duties" name="collateral_duties" value="{{cd.id}}">
-                                        <label for="collateral_duties ">{{cd.name}}</label><br>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm input-group mb-3">
-                                <p>Please add any other qualifications you have:</p>
-                                <input type="text" name="other qualifications" class="form-control">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add</button>
-                                <!-- need to figure out how to input multiple items if need be -->
                             </div>
                         </form>
                     </div>

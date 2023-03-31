@@ -1,249 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Next Promotion | Update Employee</title>
+    <title>My Next Promotion | New Employee</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- GOOGLE FONTS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="wrapper">
-        <div></div>
-        <div class="form-signup">
-            <h2>Update Employee</h2>
-            <a href="/admin/dashboard"><p>dashboard</p></a>
-            <form action="/create/employee" method="post">
-                <div>
-                    <label for="potential_hire">Potential Hire:</label>
-                    <select name="potential_hire" id="potential_hire">
-                        <option value="" placeholder=""></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select><br>
+        <!-- NAV BAR -->
+        <header class="nav">
+            <div class="logo">My Next Promotion</div>
+            <div><a href="/logout" class="btn btn-danger logout-btn">logout!</a></div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <aside class="left-sidebar">
+            <div class="sidebar-text">
+                <div class="user-name">
+                    <p>Welcome</p>
                 </div>
-                <div>
-                    <label for="years_of-service">Years of Service</label>
-                    <input type="number" name="years_of_service">
+                <hr>
+                <p><a href="/create">
+                        <p>Add Employee</p>
+                    </a></p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <div class="employee-profile">
+                <div class="empl-header">
+                    <div class="title">
+                        <h2 class="text">{{employee.first_name}} {{employee.last_name}}</h2>
+                    </div>
+                    <div>
+                        <a href="/edit/employee/{{employee.id}}"><button type="submit"
+                                class="btn btn-primary">Edit</button></a>
+                        <a href="/admin/dashboard">
+                            <p class="btn btn-primary">dashboard</p>
+                        </a>
+                    </div>
+
                 </div>
-                <div>
-                    <label for="first_name">First Name: </label>
-                    <input type="text" name="first_name">
+                <div class="profile d-flex w-100">
+                    <div class="form-signup mt-2 p-2 w-50">
+                        <form action="/create/employee" method="post" class="row g-3">
+                            <div class="col-md-12 d-flex justify-content-center mb-2">
+
+                                <div class="col-md-4 justify-content-center">
+                                    <label for="potential_hire">Potential Hire: </label>
+                                    <select name="potential_hire" class="form-control" id="potential_hire">
+                                        <option>
+                                            {% if employee.potential_hire == 1 %}
+                                            Yes
+                                            {% else %}
+                                            No
+                                            {% endif%}
+                                        </option>
+
+                                    </select>
+                                </div>
+                                <!-- Make a separate form for potential hire. with an if statement to determine which form shows based on choice. -->
+                                <div class="col-md-4 justify-content-center ">
+                                    <label for="veteran">Are you a veteran : </label>
+                                    <select name="veteran" class="form-control" id="veteran">
+                                        <option>
+                                            {% if employee.veteran ==1 %}
+                                            Yes
+                                            {% else %}
+                                            No
+                                            {% endif %}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="first_name">First Name: </label>
+                                <input type="text" class="form-control" name="first_name"
+                                    value="{{employee.first_name}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="last_name">Last Name: </label>
+                                <input type="text" class="form-control" name="last_name" value="{{employee.last_name}}"
+                                    >
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="email">Email: </label>
+                                <input type="email" class="form-control" name="email" value="{{employee.email}}"
+                                    >
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="positions">Choose your Position:</label>
+                                <select name="positions" id="positions" class="positions form-control">
+                                    {% for employee in position %}
+                                    <option>{{employee.position['title']}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-sm-4 ">
+                                <label for="years_of-service">Years of Service</label>
+                                <input type="number" class="years_of_service form-control" name="years_of_service"
+                                    value="{{employee.years_of_service}}">
+                            </div>
+                            <div class="box col-md-12">
+                                <p>Choose your current GS Level:</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col">
+                                        <input type="text" id="gs_level" name="gs_level" value="{{employee.gs_level}}">
+                                        <label for="gs_level"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/update/employee/{{employee.id}}"><button type="submit">Update Employee</button></a>
+                        </form>
+                    </div>
+                    <div class="chart-box">
+                        <div class="chart-header">
+                            <h1 class="">Chart Data</h1>
+                        </div>
+                        <div class="chart">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="last_name">Last Name: </label>
-                    <input type="text" name="last_name">
-                </div>
-                <div>
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id="">
-                </div>
-                <div>
-                    <label for="veteran">Are you a veteran : </label>
-                    <select name="veteran" id="veteran">
-                        <option value="" aria-placeholder="are you a vet?"></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="positions">Choose your Position:</label>
-                    <select name="positions" id="positions" value="{{positions}}">
-                        <option value="" placeholder="Select A Position"></option>
-                        <option value="Firefighter/EMR">Firefighter/EMR</option>
-                        <option value="Firefighter/EMT">Firefighter/EMT</option>
-                        <option value="Firefighter/Driver">Firefighter/Driver</option>
-                        <option value="Firefighter/EMT">Firefighter/Hazmat Tech</option>
-                        <option value="Lead Firefighter">Lead Firefighter</option>
-                        <option value="Station Captain">Station Captain</option>
-                        <option value="Asst.Chief of Operations">Asst.Chief of Operations</option>
-                        <option value="Asst.Chief of training">Asst.Chief of Training</option>
-                        <option value="Deputy Fire Chief">Deputy Fire Chief</option>
-                        <option value="Fire Chief">Fire Chief</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="edu_level">Education:</label>
-                    <select name="edu_level" id="edu_level" value="{{edu_level}}">
-                        <option value="" placeholder=""></option>
-                        <option value="High School">High School</option>
-                        <option value="Some College">Some College</option>
-                        <option value="Bachelors Degree ">Bachelors Degree</option>
-                        <option value="Masters Degree ">Masters Degree</option>
-                        <option value="Doctors Degree ">Doctors Degree</option>
-                    </select>
-                </div>
-
-                <div>
-                    <p>Choose your current GS Level:</p>
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 3</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 4</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 5</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 6</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 7</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 8</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 9</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 10</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 11</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 12</label><br>
-
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 13</label><br>
-                    
-                    <input type="radio" id="gs_level" name="gs_level" value="gs_level">
-                    <label for="gs_level">GS 14</label><br>
-                </div>
-                <div>
-                    <p>Select all that Applies</p>
-                    <input type="checkbox" id="Firefighter I" name="Firefighter I" value="Firefighter I">
-                    <label for="Firefighter I"> Firefighter I</label><br>
-
-                    <input type="checkbox" id="Firefighter II" name="Firefighter II" value="Firefighter II">
-                    <label for="Firefighter II"> Firefighter II</label><br>
-
-                    <input type="checkbox" id="Engine Pumper" name="Engine Pumper" value="Engine Pumper">
-                    <label for="Engine Pumper">Engine Pumper</label><br>
-
-                    <input type="checkbox" id="ARFF" name="ARFF" value="ARFF">
-                    <label for="ARFF">ARFF</label><br>
-
-                    <input type="checkbox" id="Rescue" name="Rescue" value="Rescue">
-                    <label for="Rescue">Rescue</label><br>
-
-                    <input type="checkbox" id="Brush Truck" name="Brush Truck" value="Brush Truck">
-                    <label for="Brush Truck">Brush Truck</label><br>
-
-                    <input type="checkbox" id="Wildland Firefighter I" name="Wildland Firefighter I" value="Wildland Firefighter I">
-                    <label for="Wildland Firefigher I">Wildland Firefighter I</label><br>
-
-                    <input type="checkbox" id="Wildland Firefighter II" name="Wildland Firefighter II" value="Wildland Firefighter II">
-                    <label for="Wildland Firefighter II">Wildland Firefighter II</label><br>
-
-                    <input type="checkbox" id="Hazmat Technian" name="Hazmat Technician" value="Hazmat Technician">
-                    <label for="Hazmat Technian">Hazmat Technician</label><br>
-
-                    <input type="checkbox" id="Fire Inspector I" name="Fire Inspector I" value="Fire Inspector I">
-                    <label for="Fire Inspector I">Fire Inspector I</label><br>
-
-                    <input type="checkbox" id="Fire Inspector II" name="Fire Inspector II" value="Fire Inspector I">
-                    <label for="Fire Inspector II">Fire Inspector I</label><br>
-
-                    <input type="checkbox" id="Fire Inspector III" name="Fire Inspector III" value="Fire Inspector I">
-                    <label for="Fire Inspector III">Fire Inspector III</label><br>
-
-                    <input type="checkbox" id="Fire Officer I" name="Fire Officer I" value="Fire Officer I">
-                    <label for="Fire Officer I">Fire Officer I</label><br>
-
-                    <input type="checkbox" id="Fire Officer II" name="Fire Officer II" value="Fire Officer II">
-                    <label for="Fire Officer II">Fire Officer II</label><br>
-
-                    <input type="checkbox" id="Fire Officer III" name="Fire Officer III" value="Fire Officer III">
-                    <label for="Fire Officer III">Fire Officer III</label><br>
-
-                    <input type="checkbox" id="Fire Officer IV" name="Fire Officer IV" value="Fire Officer IV">
-                    <label for="Fire Officer IV">Fire Officer IV</label><br>
-
-                    <input type="checkbox" id="Fire Instructor I" name="Fire Instructor I" value="Fire Instructor I">
-                    <label for="Fire Instructor I">Fire Instructor I</label><br>
-
-                    <input type="checkbox" id="Fire Instructor II" name="Fire Instructor II" value="Fire Instructor II">
-                    <label for="Fire Instructor II">Fire Instructor II</label><br>
-
-                    <input type="checkbox" id="Fire Instructor III" name="Fire Instructor III" value="Fire Instructor III">
-                    <label for="Fire Instructor III">Fire Instructor III</label><br>
-                </div>
-                <div>
-                    <p>Collateral Duties: </p>
-                    <input type="checkbox" id="SCBA Technician" name="SCBA Technician" value="SCBA Technician">
-                    <label for="SCBA Technician ">SCBA Technician</label><br>
-
-                    <input type="checkbox" id="ARIS/1071s" name="ARIS/1071s" value="ARIS/1071s">
-                    <label for="ARIS/1071s"> ARIS/1071s</label><br>
-
-                    <input type="checkbox" id="Fitness" name="" value="Fitness">
-                    <label for="Fitness">Fitness </label><br>
-                    
-                    <input type="checkbox" id="Drivers Training" name="" value="Drivers Training">
-                    <label for="Drivers Training">Drivers Training</label><br>
-                    
-                    <input type="checkbox" id="Detection Equipment" name="Detection Equipment" value="Detection Equipment">
-                    <label for="Detection Equipment">Detection Equipment</label><br>
-
-                    <input type="checkbox" id="Fire Instructor Hazmat Suits" name="Fire Instructor Hazmat Suits" value="Fire Instructor Hazmat Suits">
-                    <label for="Fire Instructor Hazmat Suits">Fire Instructor Hazmat Suits</label><br>
-
-                    <input type="checkbox" id="Hose" name="Hose" value="Hose">
-                    <label for="Hose">Hose</label><br>
-                    
-                    <input type="checkbox" id="Ladders" name="Ladders" value="Ladders">
-                    <label for="Ladders">Ladders</label><br>
-
-                    <input type="checkbox" id="Medical" name="Medical" value="Medical">
-                    <label for="Medical">Medical</label><br>
-
-                    <input type="checkbox" id="Power Equipment" name="Power Equipment" value="Power Equipment">
-                    <label for="Power Equipment">Power Equipment</label><br>
-
-                    <input type="checkbox" id="PPE" name="PPE" value="PPE">
-                    <label for="PPE">PPE</label><br>
-
-                    <input type="checkbox" id="Pre Fire Plans" name="Pre Fire Plans" value="Pre Fire Plans">
-                    <label for="Pre Fire Plans">Pre Fire Plans</label><br>
-
-                    <input type="checkbox" id="Pump Testing" name="Pump Testing" value="Pump Testing">
-                    <label for="Pump Testing">Pump Testing</label><br>
-
-                    <input type="checkbox" id="Radios" name="Radios" value="Radios">
-                    <label for="Radios">Radios</label><br>
-                    
-                    <input type="checkbox" id="RPP" name="RPP" value="RPP">
-                    <label for="RPP">RPP</label><br>
-
-                    <input type="checkbox" id="Tech Rescue" name="Tech Rescue" value="Tech Rescue">
-                    <label for="Tech Rescue">Tech Rescue</label><br>
-
-                    <input type="checkbox" id="Supply" name="Supply" value="Supply">
-                    <label for="Supply">Supply</label><br>
-
-                    <input type="checkbox" id="Tire & Agent" name="Tire & Agent" value="Tire & Agent">
-                    <label for="Tire & Agent">Tire & Agent</label><br>
-
-                    <input type="checkbox" id="T.Os" name="T.Os" value="T.Os">
-                    <label for="T.Os">T.Os</label><br>
-
-                    <input type="checkbox" id="Wildland" name="Wildland" value="Wildland">
-                    <label for="Wildland">Wildland</label><br>
-                </div>
-
-                <div>
-                    <p>Please add any other qualifications you have:</p>
-                    <label for="other qualifications">Other Qualifications:</label><br>
-                    <input type="text" name="other qualifications" value="{{other qualifications}}">
-                    <button>Update</button>
-                </div>
-
-                <a href=""><button type="submit">Update Employee</button></a>
-            </form>
-        </div>
+            </div>
+        </main>
     </div>
+    <footer class="fixed-bottom">
+        <ul class="nav justify-content-center ">
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Home</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Settings</a></li>
+            <li class="nav-item "><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+        </ul>
+        <p class="mb-0 text-center text-white">&copy; 2023 Timothy Singleton & Jesenia Sanchez, Inc</p>
+    </footer>
 </body>
+
 </html>

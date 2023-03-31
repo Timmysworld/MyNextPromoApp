@@ -23,6 +23,7 @@ class Employee:
         self.updated_at = data['updated_at']
         self.position  = None;
         self.certification = None;
+        self.education_level = None;
 
     @classmethod
     def create_employee(cls,data):
@@ -102,6 +103,41 @@ class Employee:
             emp.position = pos
             ListOfPositions.append(emp) 
         return ListOfPositions
+    
+    def get_all_edu_level(cls,id):
+        data = {"id": id}
+        query =""" 
+        SELECT * FROM edu_level 
+        JOIN Employees on edu_level.id = Employees.edu_level_id
+        """
+        results = connectToMySQL(cls.db).query_db(query)
+        print(results)
+        ListOfEducation = []
+        for edu  in results: 
+            e = {
+                "id": edu['Employees.id'],
+                "first_name":  edu['first_name'],
+                "last_name":  edu['last_name'],
+                "email":  edu['email'],
+                "gs_level":  edu['gs_level'],
+                "veteran":  edu['veteran'],
+                "years_of_service":  edu['years_of_service'],
+                "potential_hire":  edu['potential_hire'],
+                "created_at":  edu['Employees.created_at'],
+                "updated_at":  edu['Employees.updated_at'],
+            }
+            emp = Employee(e)
+            edu_level = {
+                "id": edu['edu_level_id'],
+                "name": edu['edu_level'],
+                "created_at":  edu['created_at'],
+                "updated_at":  edu['updated_at'],
+            }
+
+            emp.education_level = edu_level
+            ListOfEducation.append(emp)
+        return ListOfEducation
+
     
 
     @classmethod
